@@ -1,0 +1,31 @@
+theme = "dark_plus"
+
+[editor]
+mouse = true
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "position", "file-encoding", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[keys.normal]
+X = "extend_line_above"
+H = "goto_line_start"
+L = "goto_line_end"
+
+[keys.normal.space]
+q = ":quit"
+w = ":write"
