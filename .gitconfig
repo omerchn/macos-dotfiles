@@ -1,3 +1,7 @@
 [user]
 	name = Omer Cohen
 	email = omercohen990@gmail.com
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
