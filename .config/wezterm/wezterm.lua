@@ -48,7 +48,7 @@ local fav_themes = {
   breath = 'Breath (Gogh)',
   nord = 'nord',
   synthwave = 'Synthwave (Gogh)',
-  sublette = 'Sublette'
+  sublette = 'Sublette',
 }
 config.color_scheme = fav_themes.synthwave
 config.default_prog = { '/opt/homebrew/bin/fish', '-l' }

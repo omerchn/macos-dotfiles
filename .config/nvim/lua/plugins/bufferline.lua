@@ -1,10 +1,10 @@
 return {
   'akinsho/bufferline.nvim',
-  version = "*",
+  version = '*',
   dependencies = 'nvim-tree/nvim-web-devicons',
   opts = {
     options = {
-      diagnostics = "nvim_lsp",
+      diagnostics = 'nvim_lsp',
       show_close_icon = false,
       show_buffer_close_icons = false,
       show_buffer_icons = false,
@@ -69,7 +69,7 @@ return {
       pick_visible = { bg = 'none', italic = false },
       pick = { bg = 'none', italic = false },
       offset_separator = { bg = 'none', italic = false },
-      trunc_marker = { bg = 'none', italic = false }
-    }
-  }
+      trunc_marker = { bg = 'none', italic = false },
+    },
+  },
 }
