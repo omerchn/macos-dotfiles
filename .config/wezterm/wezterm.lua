@@ -49,11 +49,12 @@ local fav_themes = {
   nord = 'nord',
   synthwave = 'Synthwave (Gogh)',
   sublette = 'Sublette',
+  bat = 'Batman'
 }
-config.color_scheme = fav_themes.synthwave
+config.color_scheme = fav_themes.bat
 config.default_prog = { '/opt/homebrew/bin/fish', '-l' }
 config.default_cwd = '~/Desktop'
-config.font_size = 14
+config.font_size = 15
 config.font = wezterm.font 'JetBrains Mono'
 config.window_background_opacity = 1
 config.window_decorations = "RESIZE"
@@ -84,10 +85,10 @@ config.inactive_pane_hsb = {
   brightness = 0.8,
 }
 config.window_padding = {
-  top    = 2,
+  top    = '0.5cell',
   bottom = 0,
-  left   = 4,
-  right  = 4
+  left   = '1cell',
+  right  = '1cell'
 }
 
 
@@ -209,6 +210,12 @@ for key, value in pairs(nav_keys) do
     key = key, mods = 'CMD|CTRL', action = wezterm.action.SwitchWorkspaceRelative(value)
   })
 end
+table.insert(config.keys, {
+  key = 'n', mods = 'CMD|SHIFT', action = wezterm.action.SwitchWorkspaceRelative(-1)
+})
+table.insert(config.keys, {
+  key = 'p', mods = 'CMD|SHIFT', action = wezterm.action.SwitchWorkspaceRelative(1)
+})
 
 for key, value in pairs(nav_keys) do
   table.insert(config.keys, {
