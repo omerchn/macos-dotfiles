@@ -1,5 +1,5 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    # Commands to run in interactive sessions (keyboard connected) can go here
 end
 
 # add to PATH
@@ -18,6 +18,4 @@ alias lt='exa --git-ignore -T --icons -s ext --group-directories-first'
 alias cat='bat'
 alias gorun='npx nodemon -e go --signal SIGTERM --exec go run .'
 alias rustrun='cargo watch -c -d 0 -x run'
-alias work='cd ~/Desktop/WORK'
-alias projects='cd ~/Desktop/PROJECTS'
 alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'

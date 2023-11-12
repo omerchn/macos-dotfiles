@@ -1,3 +1,4 @@
+# disabled for now
 function _fish_greeting
     echo
     echo "      ___           ___           ___           ___      "
