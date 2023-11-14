@@ -1,4 +1,4 @@
-theme = "dark_plus"
+theme = "my_theme"
 
 [editor]
 mouse = true
@@ -13,8 +13,8 @@ select = "underline"
 hidden = false
 
 [editor.statusline]
-left = ["mode", "spinner"]
-center = ["file-name"]
+left = ["file-name", "file-modification-indicator"]
+center = ["spinner"]
 right = ["diagnostics", "position", "file-encoding", "file-type"]
 separator = "│"
 mode.normal = "NORMAL"
@@ -23,9 +23,10 @@ mode.select = "SELECT"
 
 [keys.normal]
 X = "extend_line_above"
-H = "goto_line_start"
-L = "goto_line_end"
 
 [keys.normal.space]
 q = ":quit"
-w = ":write"
+Q = ":quit!"
+s = ":write"
+S = ":write!"
+x = ":x"
