@@ -92,7 +92,11 @@ config.window_padding = {
 }
 
 
-config.keys = {}
+config.keys = {
+  { mods = "CMD", key = "LeftArrow",  action = wezterm.action.SendKey({ mods = "CTRL", key = "a" }) },
+  { mods = "CMD", key = "RightArrow", action = wezterm.action.SendKey({ mods = "CTRL", key = "e" }) },
+  { mods = "CMD", key = "Backspace",  action = wezterm.action.SendKey({ mods = "CTRL", key = "u" }) },
+}
 
 local no_ops_cmd = {
   'm', 'q'
