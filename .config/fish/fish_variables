@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export --path GOPATH:/Users/omercohen/go
+SETUVAR XDG_CONFIG_HOME:/Users/omercohen/\x2econfig
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:777777
 SETUVAR fish_color_cancel:\x2d\x2dreverse
@@ -10,7 +11,7 @@ SETUVAR fish_color_cwd:green
 SETUVAR fish_color_cwd_root:red
 SETUVAR fish_color_end:949494
 SETUVAR fish_color_error:585858
-SETUVAR fish_color_escape:00a6b2 SETUVAR fish_color_history_current:\x2d\x2dbold SETUVAR fish_color_host:normal SETUVAR fish_color_host_remote:\x1d SETUVAR fish_color_keyword:\x1d SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
+SETUVAR fish_color_escape:00a6b2\x20SETUVAR\x20fish_color_history_current\x3a\x2d\x2dbold\x20SETUVAR\x20fish_color_host\x3anormal\x20SETUVAR\x20fish_color_host_remote\x3a\x1d\x20SETUVAR\x20fish_color_keyword\x3a\x1d\x20SETUVAR\x20fish_color_match\x3a\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:00a6b2
 SETUVAR fish_color_option:\x1d

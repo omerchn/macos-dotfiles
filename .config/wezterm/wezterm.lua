@@ -55,7 +55,7 @@ config.color_scheme = fav_themes.bat
 config.default_prog = { '/opt/homebrew/bin/fish', '-l' }
 config.default_cwd = '~/Desktop'
 config.font_size = 15
-config.font = wezterm.font 'JetBrains Mono'
+config.font = wezterm.font('JetBrains Mono', { weight = 'Bold' })
 config.window_background_opacity = 1
 config.window_decorations = "RESIZE"
 config.tab_bar_at_bottom = true

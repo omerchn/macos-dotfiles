@@ -12,6 +12,7 @@ set PATH \
 
 # aliases
 alias nv='nvim'
+alias vim='nvim'
 alias ls='exa -1 --icons -s ext --group-directories-first'
 alias la='ls --all'
 alias lt='exa --git-ignore -T --icons -s ext --group-directories-first'
