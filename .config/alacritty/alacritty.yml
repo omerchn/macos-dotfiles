@@ -5,12 +5,13 @@ window:
     padding:
         x: 6
         y: 6
-
     # Spread additional padding evenly around the terminal content
     dynamic_padding: true
 
     # Disable border and title bar
     decorations: none
+
+    startup_mode: Maximized
 
 font:
     normal:
@@ -28,13 +29,14 @@ font:
 
 # Colors (One Dark); if dim colors are not set, they will be calculated
 # automatically based on the `normal` colors
-# colors:
+colors:
 #     primary:
 #         background: '#24272e'
 #         foreground: '#abb2bf'
-#     cursor:
-#         text: '#0b0b0b'    # black
-#         cursor: '#528bff'
+    cursor:
+        text: '#000000'
+        cursor: '#528bff'
+        cursor: '#ffffff'
 #     vi_mode_cursor:
 #         text: '#abb2bf'
 #         cursor: '#333841'
