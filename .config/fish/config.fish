@@ -1,5 +1,6 @@
 if status is-interactive
     # Commands to run in interactive sessions (keyboard connected) can go here
+    # nvm use -s
 end
 
 # add to PATH
