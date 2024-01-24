@@ -1,8 +1,3 @@
-vim.opt.termguicolors = true
-
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true, desc = '[E]xplore' })
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true, desc = '[E]xplore' })
-
 local HEIGHT_RATIO = 0.8
 local WIDTH_RATIO = 0.5
 
@@ -14,6 +9,8 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
+    vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true, desc = '[E]xplore' })
+
     require('nvim-tree').setup {
       sort_by = 'case_sensitive',
       disable_netrw = true,
@@ -50,7 +47,7 @@ return {
       },
       filters = {
         git_ignored = false,
-        custom = { '.git' },
+        custom = { '.git', 'node_modules' },
       },
       diagnostics = {
         enable = true,

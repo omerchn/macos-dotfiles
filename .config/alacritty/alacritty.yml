@@ -3,8 +3,8 @@
 window:
     # Blank space added around the window in pixels
     padding:
-        x: 6
-        y: 6
+        x: 0
+        y: 0
     # Spread additional padding evenly around the terminal content
     dynamic_padding: true
 
