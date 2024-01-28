@@ -41,24 +41,21 @@ return {
       },
       lualine_b = { 'branch', 'diff' },
       lualine_c = {
-        'filename'
+        -- 'filename'
       },
       lualine_x = { 'diagnostics' },
       lualine_y = {
-        -- 'location',
-        'progress',
+        -- 'progress',
       },
       lualine_z = {},
     },
     inactive_sections = {
-      lualine_a = {
-        'filename'
-      },
+      lualine_a = {},
       lualine_b = {},
       lualine_c = {},
       lualine_x = {},
       lualine_y = {},
-      lualine_z = { 'location' },
+      lualine_z = {},
     },
     tabline = {},
     extensions = {},

@@ -13,7 +13,7 @@ return {
 
     require('nvim-tree').setup {
       sort_by = 'case_sensitive',
-      disable_netrw = true,
+      -- disable_netrw = true,
       hijack_netrw = true,
       respect_buf_cwd = true,
       sync_root_with_cwd = true,

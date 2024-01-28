@@ -42,11 +42,11 @@ return {
             ['af'] = '@function.outer',
             ['if'] = '@function.inner',
 
-            ['ac'] = '@comment.outer',
-            ['ic'] = '@comment.inner',
+            ['ac'] = '@call.outer',
+            ['ic'] = '@call.inner',
 
-            ['ao'] = '@property.outer',
-            ['io'] = '@property.inner',
+            ['iv'] = '@assignment.rhs',
+            ['ik'] = '@assignment.lhs',
           },
         },
         lsp_interop = {

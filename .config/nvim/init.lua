@@ -6,5 +6,6 @@ require 'setup-lsp'
 require 'setup-cmp'
 require 'settings'
 require 'keymaps'
+require 'winbar'
 
 -- vim: ts=2 sts=2 sw=2 et

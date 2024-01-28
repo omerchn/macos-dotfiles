@@ -1,8 +1,4 @@
 return {
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -22,8 +18,8 @@ return {
   { 'numToStr/Comment.nvim',  opts = {} },
 
   -- centered cmd line
-  { 'folke/noice.nvim',       opts = {},  dependencies = { "MunifTanjim/nui.nvim" } },
+  { 'folke/noice.nvim',       opts = {},  dependencies = { 'MunifTanjim/nui.nvim' } },
 
   -- surround
-  { 'kylechui/nvim-surround', opts = {},  event = 'VeryLazy' }
+  { 'kylechui/nvim-surround', opts = {},  event = 'VeryLazy' },
 }

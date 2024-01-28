@@ -55,16 +55,8 @@ vim.o.nuw = 1
 vim.diagnostic.config { update_in_insert = true }
 
 -- no '~' on blank lines
-vim.opt.fillchars = { eob = " " }
+vim.opt.fillchars = { eob = ' ' }
 
-
-
-
--- local keys = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
--- vim.api.nvim_create_autocmd("VimEnter", {
---   callback = function()
---     -- require("telescope.builtin").find_files()
---     vim.api.nvim_feedkeys(keys, 'm', false)
---     vim.cmd('NvimTreeOpen')
---   end,
--- })
+-- highlight current line number
+vim.opt.cursorline = true
+vim.api.nvim_set_hl(0, 'CursorLine', { bg = 'none' })

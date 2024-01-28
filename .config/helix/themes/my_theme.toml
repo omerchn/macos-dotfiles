@@ -1,0 +1,5 @@
+inherits = "dark_plus"
+
+"ui.background" = "none"
+"ui.statusline" = { bg = "none" }
+"ui.statusline.inactive" = { bg = "none" }

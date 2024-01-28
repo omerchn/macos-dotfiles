@@ -2,6 +2,11 @@
 --   'lunarvim/darkplus.nvim',
 --   priority = 1000,
 --   config = function()
+--     vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+--     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+--     vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+--     vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'none' })
+--     vim.api.nvim_set_hl(0, 'WhichKeyFloat', { bg = 'none' })
 --     vim.cmd.colorscheme 'darkplus'
 --   end,
 -- }
@@ -10,10 +15,17 @@ return {
   'rose-pine/neovim',
   priority = 1000,
   config = function()
+    require('rose-pine').setup({
+      styles = {
+        italic = false,
+      }
+    })
+
     vim.cmd.colorscheme 'rose-pine'
     vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'WhichKeyFloat', { bg = 'none' })
   end,
 }

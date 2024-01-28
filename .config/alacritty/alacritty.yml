@@ -100,6 +100,7 @@ key_bindings:
     - { key: Key0,     mods: Super, action: ResetFontSize        }
     - { key: End,      mods: Shift, action: ScrollToBottom       }
     - { key: Home,     mods: Shift, action: ScrollToTop          }
+
     # Since we cannot set zoom factor we bind keys multiple times
     - { key: U,        mods: Super, action: IncreaseFontSize     }
     - { key: U,        mods: Super, action: IncreaseFontSize     }
@@ -137,15 +138,30 @@ key_bindings:
     - { key: D,        mods: Super, action: DecreaseFontSize     }
     - { key: D,        mods: Super, action: DecreaseFontSize     }
     - { key: D,        mods: Super, action: DecreaseFontSize     }
+
     # Vi mode
     - { key: LBracket, mods: Control|Alt,  action: ToggleViMode  }
     - { key: Q,        mode: Vi,           action: ToggleViMode  }
     - { key: H,        mods: Shift, mode: Vi,  action: First     }
     - { key: L,        mods: Shift, mode: Vi,  action: Last      }
+
     # Tmux-like
     - { key: P,        mods: Control|Alt,  action: Paste         }
+
     # On OSX uncomment the following to enable alt maps
     # - { key: D,        mods: Alt,   chars: "\x1bd"               }
     # - { key: Z,        mods: Alt,   chars: "\x1bz"               }
+
+    # For <C-[0-9] binds in vim
+    - { key: Key1,       mods: Control,   chars: "\x1b[1;2P" }
+    - { key: Key2,       mods: Control,   chars: "\x1b[1;2Q" }
+    - { key: Key3,       mods: Control,   chars: "\x1b[1;2R" }
+    - { key: Key4,       mods: Control,   chars: "\x1b[1;2S" }
+    - { key: Key5,       mods: Control,   chars: "\x1b[15;2~" }
+    - { key: Key6,       mods: Control,   chars: "\x1b[17;2~" }
+    - { key: Key7,       mods: Control,   chars: "\x1b[18;2~" }
+    - { key: Key8,       mods: Control,   chars: "\x1b[19;2~" }
+    - { key: Key9,       mods: Control,   chars: "\x1b[20;2~" }
+    - { key: Key0,       mods: Control,   chars: "\x1b[21;2~" }
 ...
 
