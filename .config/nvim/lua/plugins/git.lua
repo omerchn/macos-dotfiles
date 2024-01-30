@@ -8,6 +8,18 @@ return {
       'sindrets/diffview.nvim',
       'nvim-telescope/telescope.nvim',
     },
-    config = true
+    config = function()
+      local neogit = require('neogit')
+
+      neogit.setup({})
+
+      vim.keymap.set({ 'n' }, '<leader>gg', function()
+        neogit.open({ kind = 'auto' })
+      end, { desc = 'Open Neogit' })
+
+      vim.keymap.set({ 'n' }, '<leader>gc', function()
+        neogit.open({ 'commit' })
+      end, { desc = 'Neogit commit' })
+    end
   },
 }

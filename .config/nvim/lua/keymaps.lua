@@ -19,7 +19,7 @@ map({ 'n', 'v' }, 'd', '"_d')
 map({ 'n', 'v' }, 'c', '"_c')
 map({ 'n', 'v' }, 'D', '"_D')
 map({ 'n', 'v' }, 'C', '"_C')
-map({ 'n', 'v' }, 'p', '"_dP')
+map({ 'v' }, 'p', '"_dP')
 
 -- navigation
 map({ 'n', 'v', 'o' }, '<C-j>', '5j')
