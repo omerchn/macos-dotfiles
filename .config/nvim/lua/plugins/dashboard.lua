@@ -19,7 +19,7 @@ return {
           ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
           ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
           ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-          'cwd: ' .. vim.fn.getcwd(),
+          -- vim.fn.getcwd():gsub(vim.fn.expand('$HOME'), '~'),
           ''
         },
         shortcut = {
@@ -33,7 +33,7 @@ return {
         packages = { enable = false },
         project = { enable = false },
         mru = { limit = 6, icon = '󰔛 ', label = 'Recent Files', cwd_only = true },
-        footer = {}, -- footer
+        footer = {},
       }
     }
   end,

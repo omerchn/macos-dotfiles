@@ -32,7 +32,6 @@ return {
       respect_buf_cwd = true,
       sync_root_with_cwd = true,
       update_focused_file = { enable = true },
-      hijack_cursor = true,
       view = {
         relativenumber = vim.wo.relativenumber and true or false,
 
