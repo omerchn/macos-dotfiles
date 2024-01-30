@@ -10,8 +10,7 @@ return {
         enabled = true,
       },
       buffers = {
-        setNames = true,
-        colors = NoNeckPain.bufferOptionsColors,
+        -- setNames = true,
       },
       integrations = {
         NvimTree = {

@@ -3,7 +3,8 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/Desktop/WORK ~/Desktop/PROJECTS ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --reverse --border=sharp --border-label=' tmux sessionizer ' --border-label-pos=-2 --margin=5%,20% --info=right --no-scrollbar)
+    # --margin=5%,20% 
+    selected=$(find ~/Desktop ~/Desktop/WORK ~/Desktop/PROJECTS ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --reverse --border=sharp --border-label=' tmux sessionizer ' --border-label-pos=-2 --info=right --no-scrollbar)
 fi
 
 if [[ -z $selected ]]; then

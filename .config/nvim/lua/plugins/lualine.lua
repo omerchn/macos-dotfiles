@@ -37,9 +37,13 @@ return {
     },
     sections = {
       lualine_a = {
-        { 'mode', right_padding = 2 },
+        -- { 'mode', right_padding = 2 },
       },
-      lualine_b = { 'branch', 'diff' },
+      lualine_b = {
+        'branch',
+        { 'filename', path = 1 },
+        'diff',
+      },
       lualine_c = {
         -- 'filename'
       },
@@ -50,7 +54,20 @@ return {
       lualine_z = {},
     },
     inactive_sections = {
-      lualine_a = {},
+      lualine_a = {
+        'diff',
+        {
+          'filename',
+          path = 1,
+          symbols = {
+            modified = '[+]',
+            readonly = '',
+            unnamed = '',
+            newfile = '',
+          }
+        },
+        'diff',
+      },
       lualine_b = {},
       lualine_c = {},
       lualine_x = {},

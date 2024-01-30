@@ -8,19 +8,28 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- general
 map({ 'n', 'v' }, '<Space>', '<Nop>')
+map({ 'n' }, '<Esc>', '<Esc>:noh<CR>')
+map({ 'n' }, '<C-j>', '<C-w>j')
+map({ 'n' }, '<C-k>', '<C-w>k')
+map({ 'n' }, '<C-h>', '<C-w>h')
+map({ 'n' }, '<C-l>', '<C-w>l')
 
-
--- don't yank on delete and change
+-- don't yank on delete, change and paste over
 map({ 'n', 'v' }, 'd', '"_d')
 map({ 'n', 'v' }, 'c', '"_c')
 map({ 'n', 'v' }, 'D', '"_D')
 map({ 'n', 'v' }, 'C', '"_C')
+map({ 'n', 'v' }, 'p', '"_dP')
 
 -- navigation
 map({ 'n', 'v', 'o' }, '<C-j>', '5j')
 map({ 'n', 'v', 'o' }, '<C-k>', '5k')
 
--- leader
+-- move lines
+map('v', '<M-C-j>', ":m '>+1<CR>gv=gv")
+map('v', '<M-C-k>', ":m '<-2<CR>gv=gv")
+
+-- save, exit, format
 map('n', '<leader>w', ':silent w<CR>', '[W]rite the file')
 map('n', '<leader>q', ':q<CR>', '[Q]uit the file')
 map('n', '<leader>x', ':x<CR>', '[X]it - Quit and save')

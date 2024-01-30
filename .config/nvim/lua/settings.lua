@@ -2,7 +2,7 @@
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = false
+-- vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
@@ -59,4 +59,7 @@ vim.opt.fillchars = { eob = ' ' }
 
 -- highlight current line number
 vim.opt.cursorline = true
-vim.api.nvim_set_hl(0, 'CursorLine', { bg = 'none' })
+-- vim.api.nvim_set_hl(0, 'CursorLine', { bg = 'none' })
+
+-- tab width
+vim.opt.tabstop = 2

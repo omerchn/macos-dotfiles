@@ -1,25 +1,25 @@
 return {
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+	-- detect tabstop and shiftwidth automatically
+	'tpope/vim-sleuth',
 
-  -- Transparent background
-  'xiyaowong/transparent.nvim',
+	-- transparent background
+	-- 'xiyaowong/transparent.nvim',
 
-  -- Keep cursor centered at end of file
-  { 'Aasim-A/scrollEOF.nvim', config = {} },
+	-- keep cursor centered at end of file
+	{ 'Aasim-A/scrollEOF.nvim', config = {} },
 
-  -- Auto close brackets
-  { 'm4xshen/autoclose.nvim', config = {} },
+	-- auto close brackets
+	{ 'm4xshen/autoclose.nvim', config = {} },
 
-  -- Show pending keybinds
-  { 'folke/which-key.nvim',   opts = {} },
+	-- show pending keybinds
+	{ 'folke/which-key.nvim',   opts = {} },
 
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',  opts = {} },
+	-- 'gc' to comment visual regions/lines
+	{ 'numToStr/Comment.nvim',  opts = {} },
 
-  -- centered cmd line
-  { 'folke/noice.nvim',       opts = {},  dependencies = { 'MunifTanjim/nui.nvim' } },
+	-- centered cmd line
+	{ 'folke/noice.nvim',       opts = {},  dependencies = { 'MunifTanjim/nui.nvim' } },
 
-  -- surround
-  { 'kylechui/nvim-surround', opts = {},  event = 'VeryLazy' },
+	-- surround
+	{ 'kylechui/nvim-surround', opts = {},  event = 'VeryLazy' },
 }

@@ -1,3 +1,4 @@
+-- uncomment for float tree
 local HEIGHT_RATIO = 0.8
 local WIDTH_RATIO = 0.5
 
@@ -9,20 +10,37 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
-    vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true, desc = '[E]xplore' })
+    -- uncomment for sidebar tree
+    -- local function open_nvim_tree()
+    --   require('nvim-tree.api').tree.toggle({ focus = false })
+    --   vim.cmd('NvimTreeToggle')
+    -- end
+    -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+    --
+
+    vim.keymap.set('n', '<leader>e', function()
+      -- uncomment for sidebar tree
+      -- require('nvim-tree.api').tree.toggle({ focus = false })
+
+      -- uncomment for float tree
+      vim.cmd('NvimTreeToggle')
+    end, { silent = true, desc = '[E]xplore' })
 
     require('nvim-tree').setup {
       sort_by = 'case_sensitive',
-      -- disable_netrw = true,
       hijack_netrw = true,
       respect_buf_cwd = true,
       sync_root_with_cwd = true,
       update_focused_file = { enable = true },
+      hijack_cursor = true,
       view = {
         relativenumber = vim.wo.relativenumber and true or false,
+
+        -- uncomment for float tree
         float = {
           enable = true,
           open_win_config = function()
+            vim.api.nvim_set_hl(0, 'NvimTreeNormal', { bg = 'NONE' })
             local screen_w = vim.opt.columns:get()
             local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
             local window_w = screen_w * WIDTH_RATIO
@@ -44,10 +62,11 @@ return {
         width = function()
           return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
         end,
+        --
+
       },
       filters = {
         git_ignored = false,
-        custom = { '.git', 'node_modules' },
       },
       diagnostics = {
         enable = true,
@@ -55,10 +74,11 @@ return {
       renderer = {
         indent_width = 1,
         group_empty = true,
+        indent_markers = {
+          enable = true,
+        }
       },
       on_attach = function(bufnr)
-        vim.api.nvim_set_hl(0, 'NvimTreeNormal', { bg = 'NONE' })
-
         local api = require 'nvim-tree.api'
 
         local function opts(desc)
