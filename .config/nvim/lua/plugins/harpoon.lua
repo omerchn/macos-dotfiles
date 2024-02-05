@@ -2,11 +2,6 @@ return {
   'ThePrimeagen/harpoon',
   dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
-    -- vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hs', function()
-    --   require('harpoon.mark').add_file()
-    --   print('Mark added')
-    -- end, { desc = 'Harpoon - Set Mark' })
-
     vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hh', require('harpoon.mark').toggle_file,
       { desc = 'Harpoon - Toggle Mark' })
 
@@ -19,5 +14,7 @@ return {
         require('harpoon.ui').nav_file(i)
       end, { desc = 'Harpoon - to file ' .. i })
     end
-  end
+
+    pcall(require('telescope').load_extension, 'harpoon')
+  end,
 }

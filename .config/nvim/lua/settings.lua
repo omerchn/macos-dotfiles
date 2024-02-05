@@ -2,7 +2,7 @@
 -- See `:help vim.o`
 
 -- Set highlight on search
--- vim.o.hlsearch = false
+vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
@@ -46,13 +46,13 @@ vim.o.termguicolors = true
 vim.o.cmdheight = 0
 
 -- keep cursor in the middle of the screen
-vim.o.scrolloff = 10
+vim.o.scrolloff = 20
 
 -- Line numbers should take minimum space
 vim.o.nuw = 1
 
 -- Update diagnoctics in insert mode
-vim.diagnostic.config { update_in_insert = true }
+vim.diagnostic.config({ update_in_insert = true, source = true })
 
 -- no '~' on blank lines
 vim.opt.fillchars = { eob = ' ' }

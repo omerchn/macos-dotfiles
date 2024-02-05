@@ -8,13 +8,12 @@ return {
   config = function()
     -- [[ Configure Treesitter ]]
     -- See `:help nvim-treesitter`
-    require('nvim-treesitter.configs').setup {
+    require('nvim-treesitter.configs').setup({
       ignore_install = {},
       modules = {},
       sync_install = false,
       -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'javascript', 'vimdoc', 'vim',
-        'kdl' },
+      ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'javascript', 'vimdoc', 'vim', 'kdl' },
 
       -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
       auto_install = false,
@@ -88,8 +87,8 @@ return {
           },
         },
       },
-    }
-    local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
+    })
+    local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
     vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move)
     vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_opposite)
   end,

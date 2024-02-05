@@ -9,44 +9,51 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- general
 map({ 'n', 'v' }, '<Space>', '<Nop>')
 map({ 'n' }, '<Esc>', '<Esc>:noh<CR>')
-map({ 'n' }, '<C-j>', '<C-w>j')
-map({ 'n' }, '<C-k>', '<C-w>k')
-map({ 'n' }, '<C-h>', '<C-w>h')
-map({ 'n' }, '<C-l>', '<C-w>l')
 
 -- don't yank on delete, change and paste over
 map({ 'n', 'v' }, 'd', '"_d')
 map({ 'n', 'v' }, 'c', '"_c')
 map({ 'n', 'v' }, 'D', '"_D')
 map({ 'n', 'v' }, 'C', '"_C')
-map({ 'v' }, 'p', '"_dP')
+map('v', 'p', '"_dP')
 
 -- navigation
-map({ 'n', 'v', 'o' }, '<C-j>', '5j')
-map({ 'n', 'v', 'o' }, '<C-k>', '5k')
+map({ 'n', 'v', 'o' }, '<C-d>', '<C-d>zz')
+map({ 'n', 'v', 'o' }, '<C-u>', '<C-u>zz')
 
 -- move lines
-map('v', '<M-C-j>', ":m '>+1<CR>gv=gv")
-map('v', '<M-C-k>', ":m '<-2<CR>gv=gv")
+map('v', '<M-j>', ":m '>+1<CR>gv=gv")
+map('v', '<M-k>', ":m '<-2<CR>gv=gv")
+map('v', '<M-Down>', ":m '>+1<CR>gv=gv")
+map('v', '<M-Up>', ":m '<-2<CR>gv=gv")
+
+-- splits
+map({ 'n', 'v' }, '<M-C-l>', ':vertical split<cr><C-w>l')
+map({ 'n', 'v' }, '<M-C-h>', ':vertical split<cr>')
+map({ 'n', 'v' }, '<M-C-j>', ':split<cr><C-w>j')
+map({ 'n', 'v' }, '<M-C-k>', ':split<cr>')
+map({ 'n', 'v' }, '<M-C-Right>', ':vertical split<cr><C-w>l')
+map({ 'n', 'v' }, '<M-C-Left>', ':vertical split<cr>')
+map({ 'n', 'v' }, '<M-C-Down>', ':split<cr><C-w>j')
+map({ 'n', 'v' }, '<M-C-Up>', ':split<cr>')
 
 -- save, exit, format
-map('n', '<leader>w', ':silent w<CR>', '[W]rite the file')
-map('n', '<leader>q', ':q<CR>', '[Q]uit the file')
-map('n', '<leader>x', ':x<CR>', '[X]it - Quit and save')
-map('n', '<leader>f', ':Format<CR>:lua vim.diagnostic.enable()<CR>', '[F]ormat file')
+map('n', '<leader>w', ':silent w<CR>', 'W]ite the file')
+map('n', '<leader>q', ':q<CR>', 'Quit the file')
+map('n', '<leader>b', ':qa<CR>', 'Quit all')
+map('n', '<leader>x', ':x<CR>', 'Quit and save')
+map('n', '<leader>f', ':Format<CR>:lua vim.diagnostic.enable()<CR>', 'Format file')
 
--- buffers
--- map('n', '<leader>bd', ':bd<CR>', '[B]uffer [D]elete')
--- map('n', '<leader>l', ':bnext<CR>', 'Next buffer')
--- map('n', '<leader>h', ':bprevious<CR>', 'Previous buffer')
--- map('n', '<leader>bl', ':blast<CR>', 'Last buffer')
--- map('n', '<leader>bh', ':bfirst<CR>', 'First buffer')
-
--- Diagnostics
-map('n', '[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic message')
-map('n', ']d', vim.diagnostic.goto_next, 'Go to next diagnostic message')
-map('n', '<leader>de', vim.diagnostic.open_float, 'Open floating diagnostic message')
-map('n', '<leader>dl', vim.diagnostic.setloclist, 'Open diagnostics list')
+-- diagnostics
+map('n', '<leader>dk', function()
+  vim.diagnostic.goto_prev({ float = { source = true } })
+end, 'Go to previous diagnostic message')
+map('n', '<leader>dj', function()
+  vim.diagnostic.goto_next({ float = { source = true } })
+end, 'Go to next diagnostic message')
+map('n', '<leader>de', function()
+  vim.diagnostic.open_float({ source = true })
+end, 'Open floating diagnostic message')
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -70,17 +77,18 @@ return {
     end
 
     nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+    nmap('<leader>c', vim.lsp.buf.code_action, '[C]ode Action')
 
-    nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+    -- re-defind in lua.plugins.trouble
+    --
+    -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+    -- nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+    -- nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
 
     -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+    nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
     -- Lesser used LSP functionality
     nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')

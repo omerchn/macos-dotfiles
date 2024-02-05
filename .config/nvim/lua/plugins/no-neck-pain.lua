@@ -4,21 +4,21 @@ return {
     require('no-neck-pain').setup({
       width = 100,
       autocmds = {
-        enableOnVimEnter = true,
+        enableOnVimEnter = false,
       },
       mappings = {
         enabled = true,
       },
       buffers = {
         right = {
-          enabled = false
-        }
+          enabled = false,
+        },
       },
       integrations = {
         NvimTree = {
           reopen = false,
-        }
-      }
+        },
+      },
     })
-  end
+  end,
 }
