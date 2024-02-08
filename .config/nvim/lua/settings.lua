@@ -8,9 +8,6 @@ vim.o.hlsearch = false
 vim.wo.number = true
 -- vim.wo.relativenumber = true
 
--- insert mode block cursor
--- vim.opt.guicursor = ''
-
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
@@ -57,9 +54,11 @@ vim.diagnostic.config({ update_in_insert = true, source = true })
 -- no '~' on blank lines
 vim.opt.fillchars = { eob = ' ' }
 
--- highlight current line number
+-- highlight current line
 vim.opt.cursorline = true
--- vim.api.nvim_set_hl(0, 'CursorLine', { bg = 'none' })
 
 -- tab width
 vim.opt.tabstop = 2
+
+-- hide tabline
+vim.opt.showtabline = 0

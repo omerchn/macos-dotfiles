@@ -14,57 +14,40 @@ return {
   -- See `:help lualine.txt`
   opts = {
     options = {
-      theme = {
-        normal = {
-          a = { fg = status_line_colors.violet, bg = nil },
-          b = { fg = status_line_colors.white, bg = nil },
-          c = { fg = status_line_colors.white, bg = nil },
-        },
-
-        insert = { a = { fg = status_line_colors.blue, bg = nil } },
-        visual = { a = { fg = status_line_colors.cyan, bg = nil } },
-        replace = { a = { fg = status_line_colors.red, bg = nil } },
-
-        inactive = {
-          a = { fg = status_line_colors.white, bg = nil },
-          b = { fg = status_line_colors.white, bg = nil },
-          c = { fg = status_line_colors.white, bg = nil },
-        },
-      },
+      -- theme = {
+      --   normal = {
+      --     a = { fg = status_line_colors.violet, bg = nil },
+      --     b = { fg = status_line_colors.white, bg = nil },
+      --     c = { fg = status_line_colors.white, bg = nil },
+      --   },
+      --
+      --   insert = { a = { fg = status_line_colors.blue, bg = nil } },
+      --   visual = { a = { fg = status_line_colors.cyan, bg = nil } },
+      --   replace = { a = { fg = status_line_colors.red, bg = nil } },
+      --
+      --   inactive = {
+      --     a = { fg = status_line_colors.white, bg = nil },
+      --     b = { fg = status_line_colors.white, bg = nil },
+      --     c = { fg = status_line_colors.white, bg = nil },
+      --   },
+      -- },
       icons_enabled = true,
       component_separators = '•',
       section_separators = '',
     },
     sections = {
-      lualine_a = {
-        { 'mode', right_padding = 2 },
-      },
-      lualine_b = {
-        'branch',
-        { 'filename', path = 1 },
-      },
+      lualine_a = { 'mode' },
+      lualine_b = {},
       lualine_c = {},
-      lualine_x = { 'diff', 'diagnostics' },
+      lualine_x = { 'diagnostics', 'diff', 'branch' },
       lualine_y = {},
       lualine_z = {},
     },
     inactive_sections = {
-      lualine_a = {
-        'branch',
-        {
-          'filename',
-          path = 1,
-          symbols = {
-            modified = '[+]',
-            readonly = '',
-            unnamed = '',
-            newfile = '',
-          },
-        },
-      },
+      lualine_a = { 'mode' },
       lualine_b = {},
       lualine_c = {},
-      lualine_x = { 'diff', 'diagnostics' },
+      lualine_x = { 'diagnostics', 'diff', 'branch' },
       lualine_y = {},
       lualine_z = {},
     },

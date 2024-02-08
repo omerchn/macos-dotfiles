@@ -12,7 +12,7 @@ return {
         },
       })
 
-      vim.keymap.set('n', '<leader>m', function()
+      vim.keymap.set('n', '<leader>M', function()
         MiniFiles.open(vim.api.nvim_buf_get_name(0))
       end, { silent = true, desc = '[E]xplore' })
 

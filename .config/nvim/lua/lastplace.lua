@@ -1,4 +1,6 @@
+--
 -- from https://github.com/neovim/neovim/issues/16339#issuecomment-1348133829
+--
 local ignore_buftype = { 'quickfix', 'nofile', 'help' }
 local ignore_filetype = { 'gitcommit', 'gitrebase', 'svn', 'hgcommit' }
 

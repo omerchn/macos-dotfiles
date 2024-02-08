@@ -28,14 +28,14 @@ map('v', '<M-Down>', ":m '>+1<CR>gv=gv")
 map('v', '<M-Up>', ":m '<-2<CR>gv=gv")
 
 -- splits
-map({ 'n', 'v' }, '<M-C-l>', ':vertical split<cr><C-w>l')
-map({ 'n', 'v' }, '<M-C-h>', ':vertical split<cr>')
-map({ 'n', 'v' }, '<M-C-j>', ':split<cr><C-w>j')
-map({ 'n', 'v' }, '<M-C-k>', ':split<cr>')
-map({ 'n', 'v' }, '<M-C-Right>', ':vertical split<cr><C-w>l')
-map({ 'n', 'v' }, '<M-C-Left>', ':vertical split<cr>')
-map({ 'n', 'v' }, '<M-C-Down>', ':split<cr><C-w>j')
-map({ 'n', 'v' }, '<M-C-Up>', ':split<cr>')
+-- map({ 'n', 'v' }, '<M-C-l>', ':vertical split<cr><C-w>l')
+-- map({ 'n', 'v' }, '<M-C-h>', ':vertical split<cr>')
+-- map({ 'n', 'v' }, '<M-C-j>', ':split<cr><C-w>j')
+-- map({ 'n', 'v' }, '<M-C-k>', ':split<cr>')
+-- map({ 'n', 'v' }, '<M-C-Right>', ':vertical split<cr><C-w>l')
+-- map({ 'n', 'v' }, '<M-C-Left>', ':vertical split<cr>')
+-- map({ 'n', 'v' }, '<M-C-Down>', ':split<cr><C-w>j')
+-- map({ 'n', 'v' }, '<M-C-Up>', ':split<cr>')
 
 -- save, exit, format
 map('n', '<leader>w', ':silent w<CR>', 'W]ite the file')
@@ -76,7 +76,7 @@ return {
       vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+    nmap('<leader>r', vim.lsp.buf.rename, '[R]ename')
     nmap('<leader>c', vim.lsp.buf.code_action, '[C]ode Action')
 
     -- re-defind in lua.plugins.trouble
@@ -88,9 +88,9 @@ return {
 
     -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+    -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
     -- Lesser used LSP functionality
-    nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+    -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   end,
 }

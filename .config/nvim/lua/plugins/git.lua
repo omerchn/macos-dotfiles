@@ -25,7 +25,7 @@ return {
         local gs = require('gitsigns')
         vim.keymap.set({ 'n', 'v' }, '<leader>gk', gs.prev_hunk, { buffer = bufnr, desc = 'Previous Change' })
         vim.keymap.set({ 'n', 'v' }, '<leader>gj', gs.next_hunk, { buffer = bufnr, desc = 'Next change' })
-        vim.keymap.set('n', '<leader>gp', gs.preview_hunk_inline, { buffer = bufnr, desc = 'Preview change inline' })
+        vim.keymap.set('n', '<leader>gc', gs.preview_hunk_inline, { buffer = bufnr, desc = 'Preview change inline' })
         vim.keymap.set('n', '<leader>gr', gs.reset_hunk, { buffer = bufnr, desc = 'Reset change' })
         vim.keymap.set('v', '<leader>gr', ':Gitsigns reset_hunk<cr>', { buffer = bufnr, desc = 'Reset change' })
       end,

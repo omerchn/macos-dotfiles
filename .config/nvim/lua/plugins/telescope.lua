@@ -1,4 +1,3 @@
--- Fuzzy Finder (files, lsp, etc)
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
@@ -10,6 +9,14 @@ return {
         return vim.fn.executable('make') == 1
       end,
     },
+    {
+      'LukasPietzschmann/telescope-tabs',
+      config = function()
+        require('telescope').load_extension('telescope-tabs')
+        require('telescope-tabs').setup()
+      end,
+      dependencies = { 'nvim-telescope/telescope.nvim' },
+    },
   },
   config = function()
     local trouble = require('trouble.providers.telescope')
@@ -17,9 +24,6 @@ return {
       pickers = {
         find_files = {
           hidden = true,
-        },
-        lsp_references = {
-          initial_mode = 'normal',
         },
       },
       defaults = {
@@ -55,16 +59,17 @@ return {
 
     pcall(require('telescope').load_extension, 'fzf')
 
-    vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-    -- vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+    vim.keymap.set('n', '<leader>?', function()
+      require('telescope.builtin').oldfiles({ only_cwd = true })
+    end, { desc = '[?] Find recently opened files' })
+
     vim.keymap.set('n', '<leader>/', function()
-      require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-        -- winblend = 10,
-        -- previewer = false,
-      }))
+      require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())
     end, { desc = '[/] Fuzzily search in current buffer' })
 
-    -- vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+    vim.keymap.set('n', '<leader>ss', function()
+      require('telescope.builtin').git_status({ initial_mode = 'normal' })
+    end, { desc = '[S]earch Git [S]tatus' })
     vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
     vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -72,5 +77,6 @@ return {
     vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
     vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols,
       { desc = '[D]ocument [S]ymbols' })
+    vim.keymap.set({ 'n' }, '<leader>st', require('telescope-tabs').list_tabs, { desc = '[S]earch [T]abs' })
   end,
 }

@@ -32,14 +32,14 @@ font:
         style: Bold Italic
 
     # Point size of the font
-    size: 15
+    size: 14
 
 # Colors (One Dark); if dim colors are not set, they will be calculated
 # automatically based on the `normal` colors
 colors:
-#     primary:
-#         background: '#24272e'
-#         foreground: '#abb2bf'
+    primary:
+        background: '#1F1F1F'
+        foreground: '#ffffff'
     cursor:
         text: '#000000'
         cursor: '#528bff'

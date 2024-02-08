@@ -13,7 +13,7 @@ return {
     vim.keymap.set('n', 'gr', function()
       require('trouble').toggle('lsp_references')
     end, { desc = 'Goto References' })
-    vim.keymap.set('n', '<leader>D', function()
+    vim.keymap.set('n', 'gD', function()
       require('trouble').toggle('lsp_type_definitions')
     end)
     vim.keymap.set('n', 'gI', function()

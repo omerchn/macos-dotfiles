@@ -2,12 +2,12 @@ return {
   'ThePrimeagen/harpoon',
   dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
-    vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hh', require('harpoon.mark').toggle_file,
+    vim.keymap.set({ 'n', 'x', 'o' }, '<leader>m', require('harpoon.mark').toggle_file,
       { desc = 'Harpoon - Toggle Mark' })
 
-    vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hl', require('harpoon.ui').toggle_quick_menu, { desc = 'Harpoon - List' })
+    vim.keymap.set({ 'n', 'x', 'o' }, '<leader>j', require('harpoon.ui').toggle_quick_menu, { desc = 'Harpoon - List' })
 
-    vim.keymap.set('n', '<leader>ht', '<cmd>:Telescope harpoon marks<cr>', { desc = 'Harpoon - Telescope' })
+    vim.keymap.set('n', '<leader>sj', '<cmd>:Telescope harpoon marks<cr>', { desc = '[S]earch [H]arpoon' })
 
     for i = 1, 9 do
       vim.keymap.set({ 'n', 'x', 'o' }, '<C-' .. i .. '>', function()

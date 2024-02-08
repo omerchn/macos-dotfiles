@@ -63,12 +63,14 @@ Get_filename = function()
       hl_group = 'WinBar'
     end
 
-    if get_buf_option('mod') then
-      local mod = ' ' .. '%*'
-      filename = filename .. ' ' .. mod
-    end
+    -- if get_buf_option('mod') then
+    --   local mod = '  %*'
+    --   filename = filename .. mod
+    -- end
 
-    return ' ' .. '%#LspCodeLens#' .. filepath .. ' ' .. '%#' .. hl_group .. '#' .. file_icon .. '%*' .. ' ' .. '%#WinBar#' .. filename .. '%*'
+    return ' ' ..
+    '%#LspCodeLens#' ..
+    filepath .. ' ' .. '%#' .. hl_group .. '#' .. file_icon .. '%*' .. ' ' .. '%#WinBar#' .. filename .. ' %m %*'
   end
 end
 

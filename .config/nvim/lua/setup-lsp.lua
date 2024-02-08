@@ -60,3 +60,11 @@ mason_lspconfig.setup_handlers({
     })
   end,
 })
+
+-- vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
+--   group = vim.api.nvim_create_augroup('lsp-highlight', {}),
+--   callback = function()
+--     vim.lsp.buf.clear_references()
+--     vim.lsp.buf.document_highlight()
+--   end,
+-- })
