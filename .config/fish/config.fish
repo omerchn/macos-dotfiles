@@ -24,7 +24,9 @@ alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 alias cpr='gh pr create --fill-first | pbcopy'
 alias python='python3'
 alias pay_cqlsh='docker run -it --rm --entrypoint cqlsh scylladb/scylla -u scylla -p 08H3OSTxrjLbpVQ  34.251.235.224'
-alias c="code \$(find ~/Desktop ~/Desktop/WORK ~/Desktop/PROJECTS ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --reverse --info=right --no-scrollbar) -r"
+alias find_project='find ~/Desktop ~/Desktop/WORK ~/Desktop/PROJECTS ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --reverse --info=right --no-scrollbar'
+alias p='cd $(find_project)'
+alias c='code $(find_project) -r'
 
 # start starfish
 starship init fish | source

@@ -26,7 +26,11 @@ end
 --  define the property 'filetypes' to the map in question.
 local servers = {
   gopls = {},
-  pyright = {},
+  pyright = {
+    analysis = {
+      typeCheckingMode = 'on',
+    },
+  },
   rust_analyzer = {},
   tsserver = {},
   html = {},

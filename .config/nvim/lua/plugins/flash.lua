@@ -8,6 +8,23 @@ return {
         highlight = { backdrop = false },
         multi_line = false,
       },
+      search = {
+        enabled = false,
+      },
+    },
+  },
+  keys = {
+    {
+      'S',
+      mode = {
+        'n',
+        -- 'x',
+        'o',
+      },
+      function()
+        require('flash').jump()
+      end,
+      desc = 'Flash',
     },
   },
 }

@@ -2,9 +2,6 @@ return {
   -- detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  -- transparent background
-  -- 'xiyaowong/transparent.nvim',
-
   -- keep cursor centered at end of file
   { 'Aasim-A/scrollEOF.nvim', config = {} },
 

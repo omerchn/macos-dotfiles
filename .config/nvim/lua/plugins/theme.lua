@@ -85,8 +85,17 @@ return {
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
       vim.cmd.colorscheme('arctic')
-      vim.api.nvim_set_hl(0, 'LineNr', { fg = '#333333' })
-      vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#333333' })
+
+      local line_nr_fg = '#333333'
+      vim.api.nvim_set_hl(0, 'LineNr', { fg = line_nr_fg })
+      vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = line_nr_fg })
+
+      local popup_border_fg = '#111111'
+      vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorderSearch', { fg = popup_border_fg })
+      vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { fg = popup_border_fg })
+
+      local inline_blame_fg = '#444444'
+      vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = inline_blame_fg })
     end,
   },
 }

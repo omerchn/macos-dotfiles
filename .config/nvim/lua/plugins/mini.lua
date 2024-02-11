@@ -8,13 +8,17 @@ return {
           close = '<esc>',
         },
         options = {
-          use_as_default_explorer = false,
+          use_as_default_explorer = true,
+        },
+        windows = {
+          preview = true,
+          width_preview = 50,
         },
       })
 
-      vim.keymap.set('n', '<leader>M', function()
+      vim.keymap.set('n', '<leader>m', function()
         MiniFiles.open(vim.api.nvim_buf_get_name(0))
-      end, { silent = true, desc = '[E]xplore' })
+      end, { silent = true, desc = '[M]ini Files' })
 
       local map_split = function(buf_id, lhs, direction)
         local rhs = function()
@@ -44,9 +48,21 @@ return {
         pattern = 'MiniFilesBufferCreate',
         callback = function(args)
           local buf_id = args.data.buf_id
-          -- Tweak keys to your liking
-          map_split(buf_id, '<C-s>', 'belowright horizontal')
-          map_split(buf_id, '<C-v>', 'belowright vertical')
+          -- split maps
+          map_split(buf_id, '<C-s>', 'horizontal')
+          map_split(buf_id, '<C-v>', 'vertical')
+          -- navigation
+          local function up()
+            local key = vim.api.nvim_replace_termcodes('L', true, false, true)
+            vim.api.nvim_feedkeys(key, 'm', false)
+          end
+          local function down()
+            local key = vim.api.nvim_replace_termcodes('h', true, false, true)
+            vim.api.nvim_feedkeys(key, 'm', false)
+          end
+          vim.keymap.set('n', 'l', up, { buffer = buf_id })
+          vim.keymap.set('n', '<right>', up, { buffer = buf_id })
+          vim.keymap.set('n', '<left>', down, { buffer = buf_id })
         end,
       })
     end,

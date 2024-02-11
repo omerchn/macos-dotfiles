@@ -35,11 +35,6 @@ return {
         SmartSplits.swap_buf_right({ move_cursor = true })
       end)
       --
-
-      for i = 1, 9 do
-        vim.keymap.set({ 'n', 'x', 'o' }, '<leader>t' .. i, ':ToggleTerm ' .. i .. '<cr>',
-          { desc = 'ToggleTerm - to terminal ' .. i })
-      end
     end,
   },
 }

@@ -1,56 +1,44 @@
-local status_line_colors = {
-  blue = '#80a0ff',
-  cyan = '#79dac8',
-  black = '#080808',
-  white = '#c6c6c6',
-  red = '#ff5189',
-  violet = '#d183e8',
-  grey = '#303030',
+local colors = {
+  fg = '#c6c6c6',
+  bg = '#1A1A1A',
+}
+
+local sections = {
+  lualine_a = { 'branch', 'diff' },
+  lualine_b = {},
+  lualine_c = {},
+  lualine_x = {},
+  lualine_y = {},
+  lualine_z = { 'diagnostics' },
 }
 
 return {
-  -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
-  -- See `:help lualine.txt`
   opts = {
     options = {
-      -- theme = {
-      --   normal = {
-      --     a = { fg = status_line_colors.violet, bg = nil },
-      --     b = { fg = status_line_colors.white, bg = nil },
-      --     c = { fg = status_line_colors.white, bg = nil },
-      --   },
-      --
-      --   insert = { a = { fg = status_line_colors.blue, bg = nil } },
-      --   visual = { a = { fg = status_line_colors.cyan, bg = nil } },
-      --   replace = { a = { fg = status_line_colors.red, bg = nil } },
-      --
-      --   inactive = {
-      --     a = { fg = status_line_colors.white, bg = nil },
-      --     b = { fg = status_line_colors.white, bg = nil },
-      --     c = { fg = status_line_colors.white, bg = nil },
-      --   },
-      -- },
+      theme = {
+        normal = {
+          a = { fg = colors.fg, bg = colors.bg },
+          b = { fg = colors.fg, bg = colors.bg },
+          c = { fg = colors.fg, bg = colors.bg },
+        },
+        --
+        -- insert = { a = { fg = status_line_colors.blue, bg = nil } },
+        -- visual = { a = { fg = status_line_colors.cyan, bg = nil } },
+        -- replace = { a = { fg = status_line_colors.red, bg = nil } },
+        --
+        -- inactive = {
+        --   a = { fg = status_line_colors.white, bg = nil },
+        --   b = { fg = status_line_colors.white, bg = nil },
+        --   c = { fg = status_line_colors.white, bg = nil },
+        -- },
+      },
       icons_enabled = true,
-      component_separators = '•',
+      component_separators = '',
       section_separators = '',
     },
-    sections = {
-      lualine_a = { 'mode' },
-      lualine_b = {},
-      lualine_c = {},
-      lualine_x = { 'diagnostics', 'diff', 'branch' },
-      lualine_y = {},
-      lualine_z = {},
-    },
-    inactive_sections = {
-      lualine_a = { 'mode' },
-      lualine_b = {},
-      lualine_c = {},
-      lualine_x = { 'diagnostics', 'diff', 'branch' },
-      lualine_y = {},
-      lualine_z = {},
-    },
+    sections = sections,
+    inactive_sections = sections,
     tabline = {},
     extensions = {},
   },
