@@ -8,10 +8,6 @@ function M.get_ivy(extra_opts)
     prompt_title = false,
     previewer = true,
     preview_title = '',
-    -- borderchars = {
-    --   -- Left border only
-    --   preview = { '', '', '', '│', '│', '', '', '│' },
-    -- },
     layout_config = {
       height = 0.6,
     },

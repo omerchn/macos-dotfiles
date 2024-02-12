@@ -1,6 +1,6 @@
 local colors = {
   fg = '#c6c6c6',
-  bg = '#1A1A1A',
+  bg = '#1a1a1a',
 }
 
 local sections = {
@@ -22,16 +22,6 @@ return {
           b = { fg = colors.fg, bg = colors.bg },
           c = { fg = colors.fg, bg = colors.bg },
         },
-        --
-        -- insert = { a = { fg = status_line_colors.blue, bg = nil } },
-        -- visual = { a = { fg = status_line_colors.cyan, bg = nil } },
-        -- replace = { a = { fg = status_line_colors.red, bg = nil } },
-        --
-        -- inactive = {
-        --   a = { fg = status_line_colors.white, bg = nil },
-        --   b = { fg = status_line_colors.white, bg = nil },
-        --   c = { fg = status_line_colors.white, bg = nil },
-        -- },
       },
       icons_enabled = true,
       component_separators = '',
