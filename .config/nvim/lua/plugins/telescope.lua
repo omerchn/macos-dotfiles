@@ -44,13 +44,15 @@ return {
 
       pcall(require('telescope').load_extension, 'fzf')
 
-      vim.keymap.set('n', '<leader>?', function()
+      vim.keymap.set('n', '<leader>/', function()
+        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
+          layout_config = { mirror = true },
+        }))
+      end, { desc = '[/] Fuzzily search in current buffer' })
+
+      vim.keymap.set('n', '<leader>so', function()
         require('telescope.builtin').oldfiles({ only_cwd = true, initial_mode = 'normal', prompt_prefix = '' })
       end, { desc = '[?] Find recently opened files' })
-
-      vim.keymap.set('n', '<leader>/', function()
-        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())
-      end, { desc = '[/] Fuzzily search in current buffer' })
 
       vim.keymap.set('n', '<leader>ss', function()
         require('telescope.builtin').git_status({ initial_mode = 'normal', prompt_prefix = '' })
@@ -73,16 +75,23 @@ return {
       end, { desc = '[S]earch by [G]rep' })
 
       vim.keymap.set('n', '<leader>sd', function()
-        require('telescope.builtin').diagnostics({ initial_mode = 'normal', prompt_prefix = '' })
-      end, { desc = '[S]earch [D]iagnostics' })
-
-      vim.keymap.set('n', '<leader>ds', function()
         require('telescope.builtin').lsp_document_symbols()
-      end, { desc = '[D]ocument [S]ymbols' })
+      end, { desc = '[S]earch [D]ocument Symbols' })
 
-      -- vim.keymap.set({ 'n' }, '<leader>st', function()
-      --   require('telescope-tabs').list_tabs(get_ivy({ initial_mode = 'normal', prompt_prefix = '' }))
-      -- end, { desc = '[S]earch [T]abs' })
+      vim.keymap.set('n', '<leader>sr', function()
+        require('telescope.builein').resume()
+      end, { desc = '[S]earch [R]esume' })
+
+      vim.keymap.set('n', '<leader>sc', function()
+        require('telescope.builtin').command_history(require('telescope.themes').get_dropdown({
+          initial_mode = 'normal',
+          prompt_prefix = '',
+        }))
+      end, { desc = '[S]earch [C]ommand History' })
+
+      vim.keymap.set('n', '<leader>sC', function()
+        require('telescope.builtin').commands()
+      end, { desc = '[S]earch [C]ommands' })
     end,
   },
   {

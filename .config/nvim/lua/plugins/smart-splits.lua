@@ -8,14 +8,15 @@ return {
 
       local SmartSplits = require('smart-splits')
 
-      -- recommended mappings
       -- resizing splits
-      -- these keymaps will also accept a range,
-      -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
-      vim.keymap.set('n', '<A-h>', SmartSplits.resize_left)
+      vim.keymap.set('n', '<A-h>', function()
+        SmartSplits.resize_left(10)
+      end)
       vim.keymap.set('n', '<A-j>', SmartSplits.resize_down)
       vim.keymap.set('n', '<A-k>', SmartSplits.resize_up)
-      vim.keymap.set('n', '<A-l>', SmartSplits.resize_right)
+      vim.keymap.set('n', '<A-l>', function()
+        SmartSplits.resize_right(10)
+      end)
       -- moving between splits
       vim.keymap.set('n', '<C-h>', SmartSplits.move_cursor_left)
       vim.keymap.set('n', '<C-j>', SmartSplits.move_cursor_down)

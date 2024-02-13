@@ -3,8 +3,8 @@ return {
   dependencies = {
     { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
-    { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
-    { 'folke/neodev.nvim',       opts = {} },
+    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+    { 'folke/neodev.nvim', opts = {} },
   },
   config = function()
     local on_attach = function(_, bufnr)
@@ -76,7 +76,7 @@ return {
 
     -- Switch for controlling whether you want autoformatting.
     --  Use :AutoFormatToggle to toggle autoformatting on or off
-    local format_is_enabled = false
+    local format_is_enabled = true
     vim.api.nvim_create_user_command('AutoFormatToggle', function()
       format_is_enabled = not format_is_enabled
       print('Setting autoformatting to: ' .. tostring(format_is_enabled))

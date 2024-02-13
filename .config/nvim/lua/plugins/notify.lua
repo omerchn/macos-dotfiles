@@ -4,7 +4,7 @@ return {
   --   ---@diagnostic disable-next-line: missing-fields
   --   require('notify').setup({
   --     background_colour = '#eeeeee',
-  --     stages = 'slide',
+  --     stages = 'static',
   --     timeout = 1000,
   --     render = 'compact',
   --     fps = 60,

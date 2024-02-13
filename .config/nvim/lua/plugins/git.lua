@@ -20,14 +20,15 @@ return {
     'lewis6991/gitsigns.nvim',
     opts = {
       current_line_blame = true,
+      attach_to_untracked = true,
       current_line_blame_opts = { delay = 200 },
       on_attach = function(bufnr)
         local gs = require('gitsigns')
-        vim.keymap.set({ 'n', 'v' }, '<leader>gk', gs.prev_hunk, { buffer = bufnr, desc = 'Previous Change' })
-        vim.keymap.set({ 'n', 'v' }, '<leader>gj', gs.next_hunk, { buffer = bufnr, desc = 'Next change' })
-        vim.keymap.set('n', '<leader>gc', gs.preview_hunk_inline, { buffer = bufnr, desc = 'Preview change inline' })
-        vim.keymap.set('n', '<leader>gr', gs.reset_hunk, { buffer = bufnr, desc = 'Reset change' })
-        vim.keymap.set('v', '<leader>gr', ':Gitsigns reset_hunk<cr>', { buffer = bufnr, desc = 'Reset change' })
+        vim.keymap.set({ 'n', 'v' }, '<leader>gj', gs.next_hunk, { buffer = bufnr, desc = 'Next Hunk' })
+        vim.keymap.set({ 'n', 'v' }, '<leader>gk', gs.prev_hunk, { buffer = bufnr, desc = 'Previous Hunk' })
+        vim.keymap.set('n', '<leader>gp', gs.preview_hunk_inline, { buffer = bufnr, desc = 'Preview Hunk inline' })
+        vim.keymap.set('n', '<leader>gr', gs.reset_hunk, { buffer = bufnr, desc = 'Reset Hunk' })
+        vim.keymap.set('v', '<leader>gr', ':Gitsigns reset_hunk<cr>', { buffer = bufnr, desc = 'Reset Hunk' })
       end,
     },
   },

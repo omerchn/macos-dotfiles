@@ -29,6 +29,10 @@ map('v', '<M-k>', ":m '<-2<CR>gv=gv")
 map('v', '<M-Down>', ":m '>+1<CR>gv=gv")
 map('v', '<M-Up>', ":m '<-2<CR>gv=gv")
 
+-- visual indent repeat
+map('v', '>', '>gv')
+map('v', '<', '<gv')
+
 -- save, exit, format
 map('n', '<leader>w', ':silent w<CR>', 'W]ite the file')
 map('n', '<leader>q', ':q<CR>', 'Quit the file')

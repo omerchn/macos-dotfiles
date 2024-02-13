@@ -63,11 +63,6 @@ Get_filename = function()
       hl_group = 'WinBar'
     end
 
-    -- if get_buf_option('mod') then
-    --   local mod = '  %*'
-    --   filename = filename .. mod
-    -- end
-
     return ' ' ..
     '%#LspCodeLens#' ..
     filepath .. ' ' .. '%#' .. hl_group .. '#' .. file_icon .. '%*' .. ' ' .. '%#WinBar#' .. filename .. ' %m %*'
@@ -94,9 +89,9 @@ vim.api.nvim_create_augroup('_winbar', {})
 vim.api.nvim_create_autocmd({
   'CursorHoldI',
   'CursorHold',
-  -- 'BufWinEnter',
-  -- 'BufEnter',
-  -- 'BufRead',
+  'BufWinEnter',
+  'BufEnter',
+  'BufRead',
   'BufReadPost',
   'BufFilePost',
   'InsertEnter',

@@ -5,6 +5,7 @@ return {
     require('trouble').setup({
       use_diagnostic_signs = true,
       auto_jump = { 'lsp_definitions', 'lsp_type_definitions' },
+      auto_fold = true, -- automatically fold a file trouble list at creation
     })
 
     vim.keymap.set('n', 'gd', function()
@@ -21,9 +22,9 @@ return {
     end)
     vim.keymap.set('n', '<leader>dl', function()
       require('trouble').toggle('document_diagnostics')
-    end)
+    end, { desc = 'List Diagnostics' })
     vim.keymap.set('n', '<leader>dL', function()
       require('trouble').toggle('workspace_diagnostics')
-    end)
+    end, { desc = 'List Workspace Diagnostics' })
   end,
 }
