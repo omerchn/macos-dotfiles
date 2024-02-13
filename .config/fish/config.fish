@@ -11,6 +11,9 @@ set PATH \
     $HOME/.bun/bin \
     $PATH
 
+# env vars
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --info=right'
+
 # aliases
 alias nv='nvim'
 alias vim='nvim'
@@ -20,13 +23,12 @@ alias lt='exa --git-ignore -T --icons -s ext --group-directories-first'
 alias cat='bat'
 alias gorun='npx nodemon -e go --signal SIGTERM --exec go run .'
 alias rustrun='cargo watch -c -d 0 -x run'
+alias python='python3'
 alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 alias cpr='gh pr create --fill-first | pbcopy'
-alias python='python3'
-alias pay_cqlsh='docker run -it --rm --entrypoint cqlsh scylladb/scylla -u scylla -p 08H3OSTxrjLbpVQ  34.251.235.224'
-alias find_project='find ~/Desktop ~/Desktop/WORK ~/Desktop/PROJECTS ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --reverse --info=right --no-scrollbar'
-alias p='cd $(find_project)'
-alias c='code $(find_project) -r'
+alias fzf_projects='find ~/Desktop ~/Desktop/WORK ~/Desktop/PROJECTS ~/.config -mindepth 1 -maxdepth 1 -type d | fzf'
+alias p='cd $(fzf_projects || pwd)'
+alias c='code $(fzf_projects) -r'
 
 # start starfish
 starship init fish | source

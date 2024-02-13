@@ -73,9 +73,9 @@ return {
     version = '*',
     config = function()
       require('mini.operators').setup({
-        replace = {
-          prefix = 'gR',
-        },
+        -- replace = {
+        --   prefix = 'gr',
+        -- },
       })
     end,
   },

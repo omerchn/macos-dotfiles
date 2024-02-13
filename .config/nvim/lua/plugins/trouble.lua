@@ -5,13 +5,13 @@ return {
     require('trouble').setup({
       use_diagnostic_signs = true,
       auto_jump = { 'lsp_definitions', 'lsp_type_definitions' },
-      auto_fold = true, -- automatically fold a file trouble list at creation
+      auto_fold = true,
     })
 
     vim.keymap.set('n', 'gd', function()
       require('trouble').toggle('lsp_definitions')
     end, { desc = 'Goto Definition' })
-    vim.keymap.set('n', 'gr', function()
+    vim.keymap.set('n', 'gR', function()
       require('trouble').toggle('lsp_references')
     end, { desc = 'Goto References' })
     vim.keymap.set('n', 'gD', function()

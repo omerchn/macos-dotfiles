@@ -1,5 +1,8 @@
-function work
-  cd ~/Desktop/WORK/$argv
+function work --argument dir
+  if not test -n "$dir"
+    set dir ""
+  end
+  cd ~/Desktop/WORK/$dir
 end
 
 complete --command work --no-files

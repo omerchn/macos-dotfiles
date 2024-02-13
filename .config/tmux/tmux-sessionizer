@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
+export FZF_DEFAULT_OPTS="--reverse --border=sharp --border-label=' tmux sessionizer ' --border-label-pos=-2 --info=right --no-scrollbar"
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # --margin=5%,20% 
-    selected=$(find ~/Desktop ~/Desktop/WORK ~/Desktop/PROJECTS ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --reverse --border=sharp --border-label=' tmux sessionizer ' --border-label-pos=-2 --info=right --no-scrollbar)
+    selected=$(find ~/Desktop ~/Desktop/WORK ~/Desktop/PROJECTS ~/.config -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

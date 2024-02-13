@@ -29,16 +29,20 @@ map('v', '<M-k>', ":m '<-2<CR>gv=gv")
 map('v', '<M-Down>', ":m '>+1<CR>gv=gv")
 map('v', '<M-Up>', ":m '<-2<CR>gv=gv")
 
--- visual indent repeat
+-- don't leave 'visual after indent
 map('v', '>', '>gv')
 map('v', '<', '<gv')
 
 -- save, exit, format
-map('n', '<leader>w', ':silent w<CR>', 'W]ite the file')
+map('n', '<leader>w', ':silent w<CR>', 'Write the file')
 map('n', '<leader>q', ':q<CR>', 'Quit the file')
-map('n', '<leader>b', ':qa<CR>', 'Quit all')
 map('n', '<leader>x', ':x<CR>', 'Quit and save')
 map('n', '<leader>f', ':Format<CR>:lua vim.diagnostic.enable()<CR>', 'Format file')
+
+-- change forward
+-- map('n', '<leader>c{', 'f{ci{')
+-- map('n', '<leader>c[', 'f[ci[')
+-- map('n', '<leader>c(', 'f(ci(')
 
 -- diagnostics
 map('n', '<leader>dk', function()
@@ -60,33 +64,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
--- LSP
-return {
-  add_lsp_keymaps = function(bufnr)
-    local nmap = function(keys, func, desc)
-      if desc then
-        desc = 'LSP: ' .. desc
-      end
-
-      vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-    end
-
-    nmap('<leader>r', vim.lsp.buf.rename, '[R]ename')
-    nmap('<leader>c', vim.lsp.buf.code_action, '[C]ode Action')
-
-    -- re-defind in lua.plugins.trouble
-    --
-    -- nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    -- nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    -- nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    -- nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-
-    -- See `:help K` for why this keymap
-    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-    -- Lesser used LSP functionality
-    -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-  end,
-}
