@@ -11,7 +11,7 @@ return {
     vim.keymap.set('n', 'gd', function()
       require('trouble').toggle('lsp_definitions')
     end, { desc = 'Goto Definition' })
-    vim.keymap.set('n', 'gR', function()
+    vim.keymap.set('n', 'gr', function()
       require('trouble').toggle('lsp_references')
     end, { desc = 'Goto References' })
     vim.keymap.set('n', 'gD', function()

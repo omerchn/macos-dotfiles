@@ -1,12 +1,8 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
--- Set highlight on search
--- vim.o.hlsearch = false
-
 -- Make line numbers default
 vim.wo.number = true
--- vim.wo.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -39,9 +35,6 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- Hide command line when not in use
--- vim.o.cmdheight = 0
-
 -- keep cursor in the middle of the screen
 vim.o.scrolloff = 20
 
@@ -60,5 +53,5 @@ vim.opt.cursorline = true
 -- tab width
 vim.opt.tabstop = 2
 
--- hide tabline
--- vim.opt.showtabline = 0
+-- add cmd to copy file path
+vim.cmd("command! CopyRelPath call setreg('+', expand('%'))")

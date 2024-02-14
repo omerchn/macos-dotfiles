@@ -26,23 +26,18 @@ map({ 'n', 'v', 'o' }, '<C-u>', '<C-u>zz')
 -- move lines
 map('v', '<M-j>', ":m '>+1<CR>gv=gv")
 map('v', '<M-k>', ":m '<-2<CR>gv=gv")
-map('v', '<M-Down>', ":m '>+1<CR>gv=gv")
-map('v', '<M-Up>', ":m '<-2<CR>gv=gv")
+-- map('v', '<M-Down>', ":m '>+1<CR>gv=gv")
+-- map('v', '<M-Up>', ":m '<-2<CR>gv=gv")
 
 -- don't leave 'visual after indent
 map('v', '>', '>gv')
 map('v', '<', '<gv')
 
 -- save, exit, format
-map('n', '<leader>w', ':silent w<CR>', 'Write the file')
-map('n', '<leader>q', ':q<CR>', 'Quit the file')
-map('n', '<leader>x', ':x<CR>', 'Quit and save')
-map('n', '<leader>f', ':Format<CR>:lua vim.diagnostic.enable()<CR>', 'Format file')
-
--- change forward
--- map('n', '<leader>c{', 'f{ci{')
--- map('n', '<leader>c[', 'f[ci[')
--- map('n', '<leader>c(', 'f(ci(')
+map('n', '<leader>w', ':silent w<CR>', 'Write buffer')
+map('n', '<C-c>', ':q<CR>', 'Close window')
+map('n', '<leader>x', ':x<CR>', 'Close window and save buffer')
+map('n', '<leader>f', ':Format<CR>:lua vim.diagnostic.enable()<CR>', 'Format buffer')
 
 -- diagnostics
 map('n', '<leader>dk', function()

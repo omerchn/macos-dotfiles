@@ -13,21 +13,34 @@ return {
       modules = {},
       sync_install = false,
       -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'javascript', 'vimdoc', 'vim',
-        'kdl', 'html', 'css' },
+      ensure_installed = {
+        'go',
+        'lua',
+        'python',
+        'rust',
+        'tsx',
+        'typescript',
+        'javascript',
+        'vimdoc',
+        'vim',
+        'kdl',
+        'html',
+        'css',
+        'markdown',
+      },
 
       -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-      auto_install = false,
+      auto_install = true,
 
       highlight = { enable = true },
       indent = { enable = true },
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = '<c-space>',
-          node_incremental = '<c-space>',
-          scope_incremental = '<c-s>',
-          node_decremental = '<M-space>',
+          -- init_selection = '<c-space>',
+          node_incremental = 'm',
+          -- scope_incremental = '<c-s>',
+          node_decremental = 'n',
         },
       },
       textobjects = {

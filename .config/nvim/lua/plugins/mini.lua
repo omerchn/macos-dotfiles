@@ -52,17 +52,17 @@ return {
           map_split(buf_id, '<C-s>', 'horizontal')
           map_split(buf_id, '<C-v>', 'vertical')
           -- navigation
-          local function up()
+          local function forward()
             local key = vim.api.nvim_replace_termcodes('L', true, false, true)
             vim.api.nvim_feedkeys(key, 'm', false)
           end
-          local function down()
+          local function backward()
             local key = vim.api.nvim_replace_termcodes('h', true, false, true)
             vim.api.nvim_feedkeys(key, 'm', false)
           end
-          vim.keymap.set('n', 'l', up, { buffer = buf_id })
-          vim.keymap.set('n', '<right>', up, { buffer = buf_id })
-          vim.keymap.set('n', '<left>', down, { buffer = buf_id })
+          vim.keymap.set('n', 'l', forward, { buffer = buf_id })
+          vim.keymap.set('n', '<right>', forward, { buffer = buf_id })
+          vim.keymap.set('n', '<left>', backward, { buffer = buf_id })
         end,
       })
     end,
@@ -73,9 +73,21 @@ return {
     version = '*',
     config = function()
       require('mini.operators').setup({
-        -- replace = {
-        --   prefix = 'gr',
-        -- },
+        multiply = {
+          prefix = 'gm',
+        },
+        evaluate = {
+          prefix = '',
+        },
+        exchange = {
+          prefix = '',
+        },
+        replace = {
+          prefix = '',
+        },
+        sort = {
+          prefix = '',
+        },
       })
     end,
   },

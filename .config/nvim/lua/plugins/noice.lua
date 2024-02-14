@@ -3,9 +3,9 @@ return {
   dependencies = { 'MunifTanjim/nui.nvim' },
   config = function()
     require('noice').setup({
-      cmdline = {
-        -- view = 'cmdline',
-      },
+      -- cmdline = {
+      --   view = 'cmdline',
+      -- },
       routes = {
         {
           filter = {
