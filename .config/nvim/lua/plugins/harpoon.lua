@@ -12,8 +12,11 @@ return {
     vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hl', require('harpoon.ui').toggle_quick_menu, { desc = 'Harpoon - List' })
 
     vim.keymap.set('n', '<leader>sl', function()
-      require('telescope').extensions.harpoon.marks(require('utils.telescope').get_ivy({ initial_mode = 'normal',
-        prompt_prefix = '', prompt_title = '󰛢 Harpoon Marks' }))
+      require('telescope').extensions.harpoon.marks(require('utils.telescope').get_ivy({
+        initial_mode = 'normal',
+        prompt_prefix = '',
+        prompt_title = '󰛢 Harpoon Marks',
+      }))
     end, { desc = '[S]earch Harpoon Marks [L]ist' })
 
     for i = 1, 9 do

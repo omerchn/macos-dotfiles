@@ -22,7 +22,7 @@ return {
         vim.fn.system(openCommand)
       end
 
-      vim.keymap.set('n', 'gx', function()
+      vim.keymap.set('n', 'gX', function()
         require('various-textobjs').url()
         local foundURL = vim.fn.mode():find('v')
         if not foundURL then

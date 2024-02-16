@@ -3,13 +3,22 @@ local colors = {
   bg = '#1a1a1a',
 }
 
-local sections = {
-  lualine_a = { 'branch', 'diff' },
+local active_sections = {
+  lualine_a = { { 'filename', path = 1 }, 'diff', 'diagnostics' },
   lualine_b = {},
   lualine_c = {},
   lualine_x = {},
   lualine_y = {},
-  lualine_z = { 'diagnostics' },
+  lualine_z = { 'branch' },
+}
+
+local inactive_sections = {
+  lualine_a = {},
+  lualine_b = {},
+  lualine_c = {},
+  lualine_x = {},
+  lualine_y = {},
+  lualine_z = {},
 }
 
 return {
@@ -27,8 +36,8 @@ return {
       component_separators = '',
       section_separators = '',
     },
-    sections = sections,
-    inactive_sections = sections,
+    sections = active_sections,
+    inactive_sections = inactive_sections,
     tabline = {},
     extensions = {},
   },

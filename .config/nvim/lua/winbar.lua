@@ -32,10 +32,12 @@ local winbar_filetype_exclude = {
   'notify',
   'noice',
   'neotest-summary',
+  'no-neck-pain',
+  'minifiles',
   '',
 }
 
-Get_filename = function()
+local get_filename = function()
   local filepath = vim.fn.expand('%:.:h')
   local filename = vim.fn.expand('%:t')
   local extension = vim.fn.expand('%:e')
@@ -54,9 +56,21 @@ Get_filename = function()
       hl_group = 'WinBar'
     end
 
-    return ' ' ..
-    '%#LspCodeLens#' ..
-    filepath .. ' ' .. '%#' .. hl_group .. '#' .. file_icon .. '%*' .. ' ' .. '%#WinBar#' .. filename .. ' %m %*'
+    return ' '
+        .. '%#LspCodeLens#'
+        .. filepath
+        .. ' '
+        .. '%#'
+        .. hl_group
+        .. '#'
+        .. file_icon
+        .. '%*'
+        .. ' '
+        .. '%#WinBar#'
+        .. filename
+        .. ' %m'
+        --
+        .. ' %*'
   end
 end
 
@@ -64,11 +78,28 @@ local excludes = function()
   return vim.tbl_contains(winbar_filetype_exclude or {}, vim.bo.filetype)
 end
 
+local function get_marks()
+  local harpoon = require('harpoon.mark')
+  local active = harpoon.get_current_index()
+  local length = harpoon.get_length()
+  local str = ''
+  for i = 1, length, 1 do
+    if i == active then
+      str = str .. ' %#WarningMsg#' .. i .. '%*'
+    else
+      str = str .. ' ' .. i .. ''
+    end
+  end
+
+  return str
+end
+
 local get_winbar = function()
   if excludes() then
     return
   end
-  local value = Get_filename()
+  -- local value = get_filename()
+  local value = get_marks()
 
   local status_ok, _ = pcall(vim.api.nvim_set_option_value, 'winbar', value, { scope = 'local' })
   if not status_ok then

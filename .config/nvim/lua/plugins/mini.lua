@@ -80,10 +80,10 @@ return {
           prefix = '',
         },
         exchange = {
-          prefix = '',
+          prefix = 'gx',
         },
         replace = {
-          prefix = '',
+          prefix = 'r',
         },
         sort = {
           prefix = '',

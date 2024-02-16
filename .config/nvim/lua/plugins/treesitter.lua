@@ -102,8 +102,8 @@ return {
         },
       },
     })
-    local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
-    vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move)
-    vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_opposite)
+    -- local ts_repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
+    -- vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move)
+    -- vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_opposite)
   end,
 }
