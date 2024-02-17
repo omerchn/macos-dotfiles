@@ -79,7 +79,7 @@ return {
       end, { desc = '[S]earch [D]ocument Symbols' })
 
       vim.keymap.set('n', '<leader>sr', function()
-        require('telescope.builein').resume()
+        require('telescope.builtin').resume()
       end, { desc = '[S]earch [R]esume' })
 
       vim.keymap.set('n', '<leader>sc', function()

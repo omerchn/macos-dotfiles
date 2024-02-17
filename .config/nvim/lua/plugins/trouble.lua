@@ -5,7 +5,7 @@ return {
     require('trouble').setup({
       use_diagnostic_signs = true,
       auto_jump = { 'lsp_definitions', 'lsp_type_definitions' },
-      auto_fold = true,
+      auto_fold = false,
     })
 
     vim.keymap.set('n', 'gd', function()

@@ -1,75 +1,24 @@
+local function apply_theme()
+  -- vim.cmd.colorscheme('arctic')
+  -- vim.api.nvim_set_hl(0, 'LineNr', { fg = '#333333' })
+  -- vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#333333' })
+  -- vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = '#444444' })
+  -- vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { link = 'FloatBorder' })
+  -- vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorderSearch', { link = 'FloatBorder' })
+
+  vim.cmd('T2CSelect easy')
+  vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
+  vim.cmd.hi('T2CClr3Sign guibg=None')
+  vim.cmd.hi('T2CClr6Sign guibg=None')
+end
+
 return {
   {
     'rose-pine/neovim',
-    config = function()
-      -- vim.cmd.colorscheme 'rose-pine'
-    end,
   },
 
   {
     'luisiacc/gruvbox-baby',
-    config = function()
-      -- vim.cmd.colorscheme 'gruvbox-baby'
-    end,
-  },
-
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    config = function()
-      require('catppuccin').setup({
-        flavour = 'mocha', -- latte, frappe, macchiato, mocha
-        background = { -- :h background
-          light = 'latte',
-          dark = 'mocha',
-        },
-        transparent_background = true, -- disables setting the background color.
-        show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-        term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
-        dim_inactive = {
-          enabled = false, -- dims the background color of inactive window
-          shade = 'dark',
-          percentage = 0.15, -- percentage of the shade to apply to the inactive window
-        },
-        no_italic = false, -- Force no italic
-        no_bold = false, -- Force no bold
-        no_underline = false, -- Force no underline
-        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-          comments = { 'italic' }, -- Change the style of comments
-          conditionals = { 'italic' },
-          loops = {},
-          functions = {},
-          keywords = {},
-          strings = {},
-          variables = {},
-          numbers = {},
-          booleans = {},
-          properties = {},
-          types = {},
-          operators = {},
-        },
-        color_overrides = {},
-        custom_highlights = {},
-        integrations = {
-          cmp = true,
-          gitsigns = true,
-          nvimtree = true,
-          treesitter = true,
-          notify = true,
-          mini = {
-            enabled = true,
-            indentscope_color = '',
-          },
-          harpoon = true,
-          neogit = true,
-          noice = true,
-          -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-        },
-      })
-
-      -- setup must be called before loading
-      -- vim.cmd.colorscheme('catppuccin')
-    end,
   },
 
   {
@@ -77,17 +26,37 @@ return {
     branch = 'v2',
     dependencies = { 'rktjmp/lush.nvim' },
     config = function()
-      -- vim.cmd.colorscheme('arctic')
-      --
-      -- local line_nr_fg = '#333333'
-      -- vim.api.nvim_set_hl(0, 'LineNr', { fg = line_nr_fg })
-      -- vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = line_nr_fg })
-      --
-      -- local inline_blame_fg = '#444444'
-      -- vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = inline_blame_fg })
-      --
-      -- vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { link = 'FloatBorder' })
-      -- vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorderSearch', { link = 'FloatBorder' })
+      -- apply_theme()
+    end,
+  },
+
+  {
+    'svermeulen/text-to-colorscheme',
+    config = function()
+      require('text-to-colorscheme').setup({
+        ai = {
+          openai_api_key = os.getenv('OPENAI_API_KEY'),
+        },
+        hex_palettes = {
+          {
+            name = 'easy',
+            background_mode = 'dark',
+            background = '#1e2024',
+            foreground = '#a7aaa8',
+            accents = {
+              '#cc6666',
+              '#929389',
+              '#a3685a',
+              '#507873',
+              '#9aa158',
+              '#85678f',
+              '#81a2be',
+            },
+          },
+        },
+        default_palette = 'easy',
+      })
+      apply_theme()
     end,
   },
 }
