@@ -9,10 +9,11 @@ set PATH \
     $HOME/google-cloud-sdk/bin \
     /opt/homebrew/bin \
     $HOME/.bun/bin \
+    $GOPATH/bin \
     $PATH
 
 # env vars
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --info=right'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 # aliases
 alias nv='nvim'

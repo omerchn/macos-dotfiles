@@ -17,11 +17,13 @@ return {
       vim.keymap.set('n', '<A-l>', function()
         SmartSplits.resize_right(10)
       end)
+
       -- moving between splits
       vim.keymap.set('n', '<C-h>', SmartSplits.move_cursor_left)
       vim.keymap.set('n', '<C-j>', SmartSplits.move_cursor_down)
       vim.keymap.set('n', '<C-k>', SmartSplits.move_cursor_up)
       vim.keymap.set('n', '<C-l>', SmartSplits.move_cursor_right)
+
       -- swapping buffers between windows
       vim.keymap.set('n', '<leader><leader>h', function()
         SmartSplits.swap_buf_left({ move_cursor = true })

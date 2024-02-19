@@ -83,7 +83,7 @@ return {
           prefix = 'gx',
         },
         replace = {
-          prefix = 'r',
+          prefix = '',
         },
         sort = {
           prefix = '',

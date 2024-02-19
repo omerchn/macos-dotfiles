@@ -15,19 +15,13 @@ map({ 'n', 'v' }, 'd', '"_d')
 map({ 'n', 'v' }, 'c', '"_c')
 map({ 'n', 'v' }, 'D', '"_D')
 map({ 'n', 'v' }, 'C', '"_C')
--- map({ 'n', 'v' }, 's', '"_s')
+map({ 'n', 'v' }, 's', '"_s')
 map('n', 'x', '"_x')
 map('v', 'p', '"_dP')
-
--- navigation
-map({ 'n', 'v', 'o' }, '<C-d>', '<C-d>zz')
-map({ 'n', 'v', 'o' }, '<C-u>', '<C-u>zz')
 
 -- move lines
 map('v', '<M-j>', ":m '>+1<CR>gv=gv")
 map('v', '<M-k>', ":m '<-2<CR>gv=gv")
--- map('v', '<M-Down>', ":m '>+1<CR>gv=gv")
--- map('v', '<M-Up>', ":m '<-2<CR>gv=gv")
 
 -- don't leave 'visual after indent
 map('v', '>', '>gv')

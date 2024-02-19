@@ -15,7 +15,7 @@ return {
       handlers = {
         cursor = true,
         diagnostic = true,
-        gitsigns = true, -- Requires gitsigns
+        gitsigns = true,
         handle = true,
         search = false, -- Requires hlslens
         ale = false, -- Requires ALE
@@ -23,5 +23,3 @@ return {
     })
   end,
 }
-
--- test scrollbar

@@ -1,33 +1,26 @@
 local function apply_theme()
-  -- vim.cmd.colorscheme('arctic')
-  -- vim.api.nvim_set_hl(0, 'LineNr', { fg = '#333333' })
-  -- vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#333333' })
-  -- vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = '#444444' })
-  -- vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { link = 'FloatBorder' })
-  -- vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorderSearch', { link = 'FloatBorder' })
+  vim.cmd.colorscheme('arctic')
+  vim.api.nvim_set_hl(0, 'LineNr', { fg = '#333333' })
+  vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#333333' })
+  vim.api.nvim_set_hl(0, 'GitSignsCurrentLineBlame', { fg = '#444444' })
+  vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { link = 'FloatBorder' })
+  vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorderSearch', { link = 'FloatBorder' })
 
-  vim.cmd('T2CSelect easy')
-  vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
-  vim.cmd.hi('T2CClr3Sign guibg=None')
-  vim.cmd.hi('T2CClr6Sign guibg=None')
+  -- vim.cmd('T2CSelect easy')
+  -- vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
+  -- vim.cmd.hi('T2CClr3Sign guibg=None')
+  -- vim.cmd.hi('T2CClr6Sign guibg=None')
 end
 
 return {
-  {
-    'rose-pine/neovim',
-  },
+  { 'rose-pine/neovim' },
 
-  {
-    'luisiacc/gruvbox-baby',
-  },
+  { 'luisiacc/gruvbox-baby' },
 
   {
     'rockyzhang24/arctic.nvim',
     branch = 'v2',
     dependencies = { 'rktjmp/lush.nvim' },
-    config = function()
-      -- apply_theme()
-    end,
   },
 
   {

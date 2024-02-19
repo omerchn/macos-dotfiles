@@ -40,9 +40,9 @@ colors:
         background: '#1F1F1F'
         foreground: '#ffffff'
     cursor:
-        text: '#000000'
+        text: '#ffffff'
+        cursor: '-placeholder-'
         cursor: '#528bff'
-        cursor: '#ffffff'
 
 mouse:
     hide_when_typing: true
@@ -66,8 +66,7 @@ args:
 
 # Key bindings
 key_bindings:
-    - { key: V,        mods: Super, action: Paste                }
-    - { key: C,        mods: Super, action: Copy                 }
+    - { key: P,        mods: Control|Alt,  action: Paste         }
     - { key: Q,        mods: Super, action: Quit                 }
     - { key: Equals,   mods: Super, action: IncreaseFontSize     }
     - { key: Minus,    mods: Super, action: DecreaseFontSize     }
@@ -96,7 +95,7 @@ key_bindings:
     - { key: S,         mods: Super,       chars: "\x13" }
     - { key: T,         mods: Super,       chars: "\x14" }
     - { key: U,         mods: Super,       chars: "\x15" }
-    # - { key: V,         mods: Super,       chars: "\x16" }
+    - { key: V,         mods: Super,       chars: "\x16" }
     - { key: W,         mods: Super,       chars: "\x17" }
     - { key: X,         mods: Super,       chars: "\x18" }
     - { key: Y,         mods: Super,       chars: "\x19" }

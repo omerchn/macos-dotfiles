@@ -7,8 +7,8 @@ return {
       vim.keymap.set({ 'o', 'x' }, 'as', '<cmd>lua require("various-textobjs").subword("outer")<CR>')
       vim.keymap.set({ 'o', 'x' }, 'is', '<cmd>lua require("various-textobjs").subword("inner")<CR>')
 
-      -- start url opener https://github.com/chrisgrieser/nvim-various-textobjs?tab=readme-ov-file#smarter-gx
-
+      -- smart url opener https://github.com/chrisgrieser/nvim-various-textobjs?tab=readme-ov-file#smarter-gx
+      --
       local function openURL(url)
         local opener
         if vim.fn.has('macunix') == 1 then
@@ -32,7 +32,7 @@ return {
         local url = vim.fn.getreg('z')
         openURL(url)
       end, { desc = 'URL Opener' })
-
+      --
       -- end url opener
     end,
   },
