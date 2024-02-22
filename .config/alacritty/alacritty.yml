@@ -40,9 +40,11 @@ colors:
         background: '#1F1F1F'
         foreground: '#ffffff'
     cursor:
-        text: '#ffffff'
+        # text: '#ffffff'
+        text: '#000000'
         cursor: '-placeholder-'
-        cursor: '#528bff'
+        # cursor: '#528bff'
+        cursor: '#ffffff'
 
 mouse:
     hide_when_typing: true
