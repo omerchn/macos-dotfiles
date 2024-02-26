@@ -32,18 +32,16 @@ font:
         family: JetBrainsMonoNL Nerd Font Mono
         style: Bold Italic
 
-    # Point size of the font
     size: 14.5
 
 colors:
     primary:
-        background: '#1F1F1F'
+        # background: '#1F1F1F'
+        background: '#041318'
         foreground: '#ffffff'
     cursor:
-        # text: '#ffffff'
         text: '#000000'
-        cursor: '-placeholder-'
-        # cursor: '#528bff'
+        cursor: '- keep this line to prevent auto format -'
         cursor: '#ffffff'
 
 mouse:
@@ -57,8 +55,10 @@ selection:
 cursor:
     # Thickness of the cursor (number from `0.0` to `1.0`)
     thickness: 0.18
-    # Vi mode cursor style
     vi_mode_style: Block
+    style:
+        blinking: Always
+    blink_interval: 500
 
 # Default shell
 shell:
@@ -69,6 +69,7 @@ args:
 # Key bindings
 key_bindings:
     - { key: P,        mods: Control|Alt,  action: Paste         }
+    - { key: V,        mods: Control|Alt,  action: Paste         }
     - { key: Q,        mods: Super, action: Quit                 }
     - { key: Equals,   mods: Super, action: IncreaseFontSize     }
     - { key: Minus,    mods: Super, action: DecreaseFontSize     }
@@ -97,7 +98,7 @@ key_bindings:
     - { key: S,         mods: Super,       chars: "\x13" }
     - { key: T,         mods: Super,       chars: "\x14" }
     - { key: U,         mods: Super,       chars: "\x15" }
-    - { key: V,         mods: Super,       chars: "\x16" }
+    # - { key: V,         mods: Super,       chars: "\x16" }
     - { key: W,         mods: Super,       chars: "\x17" }
     - { key: X,         mods: Super,       chars: "\x18" }
     - { key: Y,         mods: Super,       chars: "\x19" }

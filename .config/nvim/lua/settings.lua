@@ -55,3 +55,6 @@ vim.opt.tabstop = 2
 
 -- add cmd to copy file path
 vim.cmd("command! CopyRelPath call setreg('+', expand('%'))")
+
+-- hide status line
+vim.opt.laststatus = 0

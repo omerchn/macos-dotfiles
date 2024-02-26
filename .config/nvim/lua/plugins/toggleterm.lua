@@ -5,7 +5,8 @@ return {
     config = function()
       require('toggleterm').setup({
         open_mapping = [[<C-t><C-t>]],
-        direction = 'float',
+        -- direction = 'float',
+        direction = 'horizontal',
         highlights = {
           FloatBorder = {
             guifg = '#666666',
@@ -17,8 +18,8 @@ return {
         local opts = { buffer = 0 }
         vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
         -- vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-        -- vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-        -- vim.keymap.set('t', '<C-t>', [[<Cmd>ToggleTerm<CR>]], opts)
+        vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+        vim.keymap.set('t', '<C-t>', [[<Cmd>ToggleTerm<CR>]], opts)
         -- vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
         vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
       end

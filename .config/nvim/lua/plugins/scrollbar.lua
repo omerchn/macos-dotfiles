@@ -9,7 +9,7 @@ return {
       marks = {
         Cursor = {
           text = ' ',
-          priority = 999, -- lowest priority
+          priority = 999,
         },
       },
       handlers = {

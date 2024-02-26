@@ -52,7 +52,7 @@ return {
 
       vim.keymap.set('n', '<leader>so', function()
         require('telescope.builtin').oldfiles({ only_cwd = true, initial_mode = 'normal', prompt_prefix = '' })
-      end, { desc = '[?] Find recently opened files' })
+      end, { desc = 'Find recently [O]pened files' })
 
       vim.keymap.set('n', '<leader>ss', function()
         require('telescope.builtin').git_status({ initial_mode = 'normal', prompt_prefix = '' })
@@ -83,10 +83,7 @@ return {
       end, { desc = '[S]earch [R]esume' })
 
       vim.keymap.set('n', '<leader>sc', function()
-        require('telescope.builtin').command_history(require('telescope.themes').get_dropdown({
-          initial_mode = 'normal',
-          prompt_prefix = '',
-        }))
+        require('telescope.builtin').commands()
       end, { desc = '[S]earch [C]ommand History' })
 
       vim.keymap.set('n', '<leader>sC', function()

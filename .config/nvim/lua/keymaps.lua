@@ -10,6 +10,10 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 map({ 'n', 'v' }, '<Space>', '<Nop>')
 map({ 'n' }, '<Esc>', '<Esc>:noh<CR>')
 
+-- movement
+-- map({ 'n', 'v' }, '<C-j>', '5j')
+-- map({ 'n', 'v' }, '<C-k>', '5k')
+
 -- don't yank on delete, change and paste over
 map({ 'n', 'v' }, 'd', '"_d')
 map({ 'n', 'v' }, 'c', '"_c')
