@@ -1,4 +1,4 @@
-# .dotfiles
+# macOS dotfiles
 
 To initilize in a new computer, run:
 ```bash
