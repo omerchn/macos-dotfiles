@@ -158,7 +158,7 @@ swap-main:
   key: enter
 
 # Move focus to the n-th screen in the list; e.g., focus-screen-3 will move mouse focus to the 3rd screen. Note that the main window in the given screen will be focused.
-#focus-screen-n:
+# focus-screen-n:
 # focus-screen-<screen-number>:
 #   mod: mod1
 #   key: f
@@ -171,6 +171,19 @@ swap-main:
 # throw-space-<screen-number>:
 #   mod: mod1
 #   key: i
+
+throw-space-1:
+  mod: mod2
+  key: "0"
+throw-space-2:
+  mod: mod2
+  key: "1"
+throw-space-3:
+  mod: mod2
+  key: "2"
+throw-space-4:
+  mod: mod2
+  key: "3"
 
 # Select tall layout
 select-tall-layout:
@@ -185,12 +198,12 @@ select-wide-layout:
 # Select fullscreen layout
 select-fullscreen-layout:
   mod: mod1
-  key: d
+  key: f
 
 # Select column layout
 select-column-layout:
   mod: mod1
-  key: f
+  key: d
 
 # Move the currently focused window to the space to the left.
 throw-space-left:
@@ -210,7 +223,7 @@ toggle-float:
 # Display the layout HUD with the current layout on each screen.
 display-current-layout:
   mod: mod1
-  key: i
+  key: "_"
 
 # Turn on or off tiling entirely.
 toggle-tiling:
@@ -242,7 +255,7 @@ window-margins: true
 smart-window-margins: false
 
 # The size of the margins between windows (in px, default 0).
-window-margin-size: 10
+window-margin-size: 0
 
 # The max number of windows that may be visible on a screen at one time before
 # additional windows are minimized. A value of 0 disables the feature.
@@ -264,10 +277,10 @@ floating-is-blacklist: true
 ignore-menu-bar: false
 
 # true if windows smaller than a 500px square should be floating by default (default true)
-float-small-windows: true
+float-small-windows: false
 
 # true if the mouse should move position to the center of a window when it becomes focused (default false). Note that this is largely incompatible with focus-follows-mouse.
-mouse-follows-focus: false
+mouse-follows-focus: true
 
 # true if the windows underneath the mouse should become focused as the mouse moves (default false). Note that this is largely incompatible with mouse-follows-focus
 focus-follows-mouse: false
@@ -282,7 +295,7 @@ mouse-resizes-windows: false
 enables-layout-hud: true
 
 # true to display the name of the layout when moving to a new space (default true).
-enables-layout-hud-on-space-change: true
+enables-layout-hud-on-space-change: false
 
 # true to get updates to beta versions of the software (default false).
 use-canary-build: false
