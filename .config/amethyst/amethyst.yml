@@ -174,16 +174,16 @@ swap-main:
 
 throw-space-1:
   mod: mod2
-  key: "0"
+  key: "1"
 throw-space-2:
   mod: mod2
-  key: "1"
+  key: "2"
 throw-space-3:
   mod: mod2
-  key: "2"
+  key: "3"
 throw-space-4:
   mod: mod2
-  key: "3"
+  key: "4"
 
 # Select tall layout
 select-tall-layout:
