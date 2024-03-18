@@ -98,8 +98,8 @@ local get_winbar = function()
   if excludes() then
     return
   end
-  -- local value = get_filename()
-  local value = get_marks()
+  local value = get_filename()
+  -- local value = get_marks()
 
   local status_ok, _ = pcall(vim.api.nvim_set_option_value, 'winbar', value, { scope = 'local' })
   if not status_ok then

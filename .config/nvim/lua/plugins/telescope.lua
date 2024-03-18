@@ -28,6 +28,21 @@ return {
           find_files = {
             hidden = true,
           },
+          oldfiles = { only_cwd = true, initial_mode = 'normal', prompt_prefix = '' },
+          git_status = { initial_mode = 'normal', prompt_prefix = '' },
+          grep_string = { initial_mode = 'normal', prompt_prefix = '' },
+          buffers = {
+            initial_mode = 'normal',
+            prompt_prefix = '',
+            mappings = {
+              n = {
+                ['<c-x>'] = require('telescope.actions').delete_buffer,
+              },
+              i = {
+                ['<c-x>'] = require('telescope.actions').delete_buffer,
+              },
+            },
+          },
         },
         defaults = get_ivy({
           mappings = {
@@ -51,11 +66,11 @@ return {
       end, { desc = '[/] Fuzzily search in current buffer' })
 
       vim.keymap.set('n', '<leader>so', function()
-        require('telescope.builtin').oldfiles({ only_cwd = true, initial_mode = 'normal', prompt_prefix = '' })
+        require('telescope.builtin').oldfiles()
       end, { desc = 'Find recently [O]pened files' })
 
       vim.keymap.set('n', '<leader>ss', function()
-        require('telescope.builtin').git_status({ initial_mode = 'normal', prompt_prefix = '' })
+        require('telescope.builtin').git_status()
       end, { desc = '[S]earch Git [S]tatus' })
 
       vim.keymap.set('n', '<leader>sf', function()
@@ -67,7 +82,7 @@ return {
       end, { desc = '[S]earch [H]elp' })
 
       vim.keymap.set('n', '<leader>sw', function()
-        require('telescope.builtin').grep_string({ initial_mode = 'normal', prompt_prefix = '' })
+        require('telescope.builtin').grep_string()
       end, { desc = '[S]earch current [W]ord' })
 
       vim.keymap.set('n', '<leader>sg', function()
@@ -89,6 +104,10 @@ return {
       vim.keymap.set('n', '<leader>sC', function()
         require('telescope.builtin').commands()
       end, { desc = '[S]earch [C]ommands' })
+
+      vim.keymap.set('n', '<leader>sb', function()
+        require('telescope.builtin').buffers()
+      end, { desc = '[S]earch [B]uffers' })
     end,
   },
   {
