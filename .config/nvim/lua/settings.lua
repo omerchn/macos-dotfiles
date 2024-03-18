@@ -36,7 +36,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- keep cursor in the middle of the screen
-vim.o.scrolloff = 20
+vim.o.scrolloff = 15
 
 -- Line numbers should take minimum space
 vim.o.nuw = 1

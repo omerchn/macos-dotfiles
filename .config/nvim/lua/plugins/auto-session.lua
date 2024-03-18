@@ -10,7 +10,7 @@ return {
       auto_session_suppress_dirs = { '/' },
       post_restore_cmds = { 'SessionDelete' },
     })
-    vim.keymap.set('n', '<leader>b', function()
+    vim.keymap.set('n', '<leader>S', function()
       vim.cmd('SessionSave')
       vim.cmd('qa')
     end, { desc = 'Quit all and save session' })

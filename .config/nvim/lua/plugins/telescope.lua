@@ -105,7 +105,7 @@ return {
         require('telescope.builtin').commands()
       end, { desc = '[S]earch [C]ommands' })
 
-      vim.keymap.set('n', '<leader>sb', function()
+      vim.keymap.set('n', '<leader>b', function()
         require('telescope.builtin').buffers()
       end, { desc = '[S]earch [B]uffers' })
     end,
