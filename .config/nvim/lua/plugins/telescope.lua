@@ -25,9 +25,7 @@ return {
 
       require('telescope').setup({
         pickers = {
-          find_files = {
-            hidden = true,
-          },
+          find_files = { hidden = true },
           oldfiles = { only_cwd = true, initial_mode = 'normal', prompt_prefix = '' },
           git_status = { initial_mode = 'normal', prompt_prefix = '' },
           grep_string = { initial_mode = 'normal', prompt_prefix = '' },
@@ -98,7 +96,7 @@ return {
       end, { desc = '[S]earch [R]esume' })
 
       vim.keymap.set('n', '<leader>sc', function()
-        require('telescope.builtin').commands()
+        require('telescope.builtin').command_history()
       end, { desc = '[S]earch [C]ommand History' })
 
       vim.keymap.set('n', '<leader>sC', function()
