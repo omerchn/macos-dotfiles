@@ -25,6 +25,7 @@ return {
       },
       filters = {
         git_ignored = false,
+        custom = { '.DS_Store' },
       },
       diagnostics = {
         enable = true,
