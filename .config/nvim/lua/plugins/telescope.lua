@@ -51,7 +51,7 @@ return {
               ['<c-t>'] = trouble.open_with_trouble,
             },
           },
-          file_ignore_patterns = { 'node_modules', '.git/' },
+          file_ignore_patterns = { 'node_modules', '.git/', '.next/', '.DS_Store' },
         }),
       })
 
