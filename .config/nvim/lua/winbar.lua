@@ -78,21 +78,20 @@ local excludes = function()
   return vim.tbl_contains(winbar_filetype_exclude or {}, vim.bo.filetype)
 end
 
-local function get_marks()
-  local harpoon = require('harpoon.mark')
-  local active = harpoon.get_current_index()
-  local length = harpoon.get_length()
-  local str = ''
-  for i = 1, length, 1 do
-    if i == active then
-      str = str .. ' %#WarningMsg#' .. i .. '%*'
-    else
-      str = str .. ' ' .. i .. ''
-    end
-  end
-
-  return str
-end
+-- local function get_marks()
+--   local harpoon = require('harpoon.mark')
+--   local active = harpoon.get_current_index()
+--   local length = harpoon.get_length()
+--   local str = ''
+--   for i = 1, length, 1 do
+--     if i == active then
+--       str = str .. ' %#WarningMsg#' .. i .. '%*'
+--     else
+--       str = str .. ' ' .. i .. ''
+--     end
+--   end
+--   return str
+-- end
 
 local get_winbar = function()
   if excludes() then
