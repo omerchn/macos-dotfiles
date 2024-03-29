@@ -6,15 +6,12 @@ return {
       tabline = false,
     })
 
-    vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hh', require('harpoon.mark').toggle_file,
-      { desc = 'Harpoon - Toggle Mark' })
+    vim.keymap.set({ 'n', 'x', 'o' }, '<C-m>', require('harpoon.mark').toggle_file, { desc = 'Harpoon - Toggle Mark' })
 
-    vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hl', require('harpoon.ui').toggle_quick_menu, { desc = 'Harpoon - List' })
+    vim.keymap.set({ 'n', 'x', 'o' }, '<leader>h', require('harpoon.ui').toggle_quick_menu, { desc = 'Harpoon - List' })
 
     vim.keymap.set('n', '<leader>sl', function()
       require('telescope').extensions.harpoon.marks(require('utils.telescope').get_ivy({
-        initial_mode = 'normal',
-        prompt_prefix = '',
         prompt_title = '󰛢 Harpoon Marks',
       }))
     end, { desc = '[S]earch Harpoon Marks [L]ist' })

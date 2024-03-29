@@ -1,4 +1,6 @@
 local function apply_theme()
+  --
+
   vim.cmd.colorscheme('arctic')
   vim.api.nvim_set_hl(0, 'Normal', { bg = 'None' })
   vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'None' })
@@ -9,8 +11,15 @@ local function apply_theme()
   vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { link = 'FloatBorder' })
   vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorderSearch', { link = 'FloatBorder' })
   vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#1F1F1F' })
-  vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#031318', bg = 'None' })
-  vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#031318', bg = 'None' })
+
+  -- vim.cmd.colorscheme('rose-pine')
+  -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'None' })
+  -- -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'None' })
+  -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'None' })
+  -- vim.cmd.hi('FloatBorder guibg=None')
+  -- vim.api.nvim_set_hl(0, 'WinBar', { bg = 'None' })
+  -- -- vim.api.nvim_set_hl(0, 'LineNr', { fg = '#25233A' })
+  -- -- vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#6C6883' })
 
   -- vim.cmd('T2CSelect easy')
   -- vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
@@ -22,6 +31,8 @@ local function apply_theme()
   -- vim.cmd.hi('LineNr guifg=#333333')
   -- vim.cmd.hi('CursorLineNr guifg=#333333')
   -- vim.cmd.hi('WinSeparator guifg=' .. Osaka_bg_color)
+
+  --
 end
 
 return {

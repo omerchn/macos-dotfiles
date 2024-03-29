@@ -56,10 +56,6 @@ vim.opt.tabstop = 2
 -- add cmd to copy file path
 vim.cmd("command! CopyRelPath call setreg('+', expand('%'))")
 
--- hide status line
-vim.opt.laststatus = 0
-vim.cmd("set statusline=%{repeat('-',winwidth('.'))}")
-
 -- split to the right
 vim.opt.splitright = true
 
