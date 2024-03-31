@@ -79,6 +79,10 @@ return {
         require('telescope.builtin').help_tags()
       end, { desc = '[S]earch [H]elp' })
 
+      vim.keymap.set('n', '<leader>sH', function()
+        require('telescope.builtin').highlights()
+      end, { desc = '[S]earch [H]ighlights' })
+
       vim.keymap.set('n', '<leader>sw', function()
         require('telescope.builtin').grep_string()
       end, { desc = '[S]earch current [W]ord' })

@@ -3,12 +3,25 @@ return {
     'chrisgrieser/nvim-various-textobjs',
     lazy = false,
     config = function()
-      require('various-textobjs').setup({ useDefaultKeymaps = false })
-      vim.keymap.set({ 'o', 'x' }, 'as', '<cmd>lua require("various-textobjs").subword("outer")<CR>')
-      vim.keymap.set({ 'o', 'x' }, 'is', '<cmd>lua require("various-textobjs").subword("inner")<CR>')
+      local textobjs = require('various-textobjs')
+      textobjs.setup({ useDefaultKeymaps = false })
+      vim.keymap.set({ 'o', 'x' }, 'as', function()
+        textobjs.subword('outer')
+      end)
+      vim.keymap.set({ 'o', 'x' }, 'is', function()
+        textobjs.subword('inner')
+      end)
+      vim.keymap.set({ 'o', 'x' }, 'ie', function()
+        textobjs.visibleInWindow()
+      end)
+      vim.keymap.set({ 'o', 'x' }, 'ii', function()
+        textobjs.indentation('inner', 'inner')
+      end)
+      vim.keymap.set({ 'o', 'x' }, 'ai', function()
+        textobjs.indentation('outer', 'outer')
+      end)
 
       -- smart url opener https://github.com/chrisgrieser/nvim-various-textobjs?tab=readme-ov-file#smarter-gx
-      --
       local function openURL(url)
         local opener
         if vim.fn.has('macunix') == 1 then
@@ -23,7 +36,7 @@ return {
       end
 
       vim.keymap.set('n', 'gX', function()
-        require('various-textobjs').url()
+        textobjs.url()
         local foundURL = vim.fn.mode():find('v')
         if not foundURL then
           return
@@ -32,7 +45,6 @@ return {
         local url = vim.fn.getreg('z')
         openURL(url)
       end, { desc = 'URL Opener' })
-      --
       -- end url opener
     end,
   },
