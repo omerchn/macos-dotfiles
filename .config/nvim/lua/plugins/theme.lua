@@ -11,6 +11,8 @@ local function apply_theme()
   vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorder', { link = 'FloatBorder' })
   vim.api.nvim_set_hl(0, 'NoiceCmdlinePopupBorderSearch', { link = 'FloatBorder' })
   vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#1F1F1F' })
+  vim.api.nvim_set_hl(0, 'TabLine', { bg = 'None' })
+  vim.api.nvim_set_hl(0, 'TabLineFill', { bg = 'None' })
 
   -- vim.cmd.colorscheme('rose-pine')
   -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'None' })

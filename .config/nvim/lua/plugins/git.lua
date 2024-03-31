@@ -5,7 +5,26 @@ return {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
+      {
+        'sindrets/diffview.nvim',
+        config = function()
+          local diffview = require('diffview')
+          diffview.setup({
+            keymaps = {
+              view = {
+                ['q'] = ':tabclose<CR>',
+              },
+              file_panel = {
+                ['q'] = ':tabclose<CR>',
+              },
+            },
+          })
+          vim.opt.fillchars:append({ diff = '╱' })
+          vim.keymap.set({ 'n' }, '<leader>gd', function()
+            diffview.open({})
+          end, { desc = 'Open Diffview' })
+        end,
+      },
       'nvim-telescope/telescope.nvim',
     },
     config = function()
