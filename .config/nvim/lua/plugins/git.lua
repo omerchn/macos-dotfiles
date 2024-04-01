@@ -19,7 +19,6 @@ return {
               },
             },
           })
-          vim.opt.fillchars:append({ diff = '╱' })
           vim.keymap.set({ 'n' }, '<leader>gd', function()
             diffview.open({})
           end, { desc = 'Open Diffview' })

@@ -61,3 +61,6 @@ vim.opt.splitright = true
 
 -- split below
 vim.opt.splitbelow = true
+
+-- change fill chars for diffview
+vim.opt.fillchars:append({ diff = '╱' })
