@@ -21,13 +21,13 @@ map({ 'n', 'v' }, 'D', '"_D')
 map({ 'n', 'v' }, 'C', '"_C')
 map({ 'n', 'v' }, 's', '"_s')
 map('n', 'x', '"_x')
-map('v', 'p', '"_dP')
+map('v', 'p', 'P')
 
 -- move lines
 map('v', '<M-j>', ":m '>+1<CR>gv=gv")
 map('v', '<M-k>', ":m '<-2<CR>gv=gv")
 
--- don't leave 'visual after indent
+-- don't leave visual after indent
 map('v', '>', '>gv')
 map('v', '<', '<gv')
 
