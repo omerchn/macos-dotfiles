@@ -49,7 +49,7 @@ return {
         callback = function(args)
           local buf_id = args.data.buf_id
           -- split maps
-          map_split(buf_id, '<C-s>', 'horizontal')
+          map_split(buf_id, '<C-x>', 'horizontal')
           map_split(buf_id, '<C-v>', 'vertical')
           -- navigation
           local function forward()
