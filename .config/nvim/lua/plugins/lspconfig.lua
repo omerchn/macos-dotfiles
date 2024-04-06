@@ -3,8 +3,8 @@ return {
   dependencies = {
     { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
-    { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
-    { 'folke/neodev.nvim',       opts = {} },
+    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+    { 'folke/neodev.nvim', opts = {} },
   },
   config = function()
     local on_attach = function(_, bufnr)
@@ -18,7 +18,7 @@ return {
 
       nmap('<leader>r', vim.lsp.buf.rename, '[R]ename')
       nmap('<leader>c', vim.lsp.buf.code_action, '[C]ode Action')
-      nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+      nmap('gh', vim.lsp.buf.hover, 'Hover Documentation')
 
       -- TODO: decide on a key
       -- nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')

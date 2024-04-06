@@ -9,10 +9,12 @@ return {
 
       vim.keymap.set({ 'n', 'x', 'o' }, '<leader>ha', function()
         harpoon:list():append()
+        print('Added mark')
       end, { desc = 'Harpoon - Toggle Mark' })
 
       vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hr', function()
         harpoon:list():remove()
+        print('Removed mark')
       end, { desc = 'Harpoon - Toggle Mark' })
 
       vim.keymap.set({ 'n', 'x', 'o' }, '<leader>hl', function()

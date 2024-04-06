@@ -1,8 +1,9 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
--- Make line numbers default
+-- Make line numbers relative
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'

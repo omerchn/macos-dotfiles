@@ -1,21 +1,12 @@
 # yamllint disable rule:braces rule:commas rule:colons rule:comments-indentation
 ---
 window:
-    # Blank space added around the window in pixels
     padding:
         x: 0
         y: 0
-
-    # Spread additional padding evenly around the terminal content
     dynamic_padding: true
-
-    # Disable border and title bar
     decorations: None
-
-    # start in full screen
     startup_mode: Maximized
-
-    # fix option key for mac
     option_as_alt: Both
 
 font:
@@ -48,12 +39,9 @@ mouse:
     hide_when_typing: true
 
 selection:
-    # When set to `true`, selected text will be copied to the primary
-    # clipboard.
     save_to_clipboard: true
 
 cursor:
-    # Thickness of the cursor (number from `0.0` to `1.0`)
     thickness: 0.18
     vi_mode_style: Block
     style:
@@ -68,51 +56,61 @@ args:
 
 # Key bindings
 key_bindings:
-    - { key: P,        mods: Control|Alt,  action: Paste         }
-    - { key: V,        mods: Control|Alt,  action: Paste         }
-    - { key: Q,        mods: Super, action: Quit                 }
-    - { key: Equals,   mods: Super, action: IncreaseFontSize     }
-    - { key: Minus,    mods: Super, action: DecreaseFontSize     }
-    - { key: Key0,     mods: Super, action: ResetFontSize        }
+    # Vi mode
+    - { key: LBracket,  mods: Control|Alt,  action: ToggleViMode  }
 
-    - { key: LBracket, mods: Control|Alt,  action: ToggleViMode  }
+    # Font size
+    - { key: Equals,  mods: Command,  action: IncreaseFontSize     }
+    - { key: Minus,   mods: Command,  action: DecreaseFontSize     }
+    - { key: Key0,    mods: Command,  action: ResetFontSize        }
 
-    - { key: A,         mods: Super,       chars: "\x01" }
-    - { key: B,         mods: Super,       chars: "\x02" }
-    - { key: C,         mods: Super,       chars: "\x03" }
-    - { key: D,         mods: Super,       chars: "\x04" }
-    - { key: E,         mods: Super,       chars: "\x05" }
-    - { key: F,         mods: Super,       chars: "\x06" }
-    - { key: G,         mods: Super,       chars: "\x07" }
-    - { key: H,         mods: Super,       chars: "\x08" }
-    - { key: I,         mods: Super,       chars: "\x09" }
-    - { key: J,         mods: Super,       chars: "\x0A" }
-    - { key: K,         mods: Super,       chars: "\x0B" }
-    - { key: L,         mods: Super,       chars: "\x0C" }
-    - { key: M,         mods: Super,       chars: "\x0D" }
-    - { key: N,         mods: Super,       chars: "\x0E" }
-    - { key: O,         mods: Super,       chars: "\x0F" }
-    - { key: P,         mods: Super,       chars: "\x10" }
-    - { key: Q,         mods: Super,       chars: "\x11" }
-    - { key: R,         mods: Super,       chars: "\x12" }
-    - { key: S,         mods: Super,       chars: "\x13" }
-    - { key: T,         mods: Super,       chars: "\x14" }
-    - { key: U,         mods: Super,       chars: "\x15" }
-    # - { key: V,         mods: Super,       chars: "\x16" }
-    - { key: W,         mods: Super,       chars: "\x17" }
-    - { key: X,         mods: Super,       chars: "\x18" }
-    - { key: Y,         mods: Super,       chars: "\x19" }
-    - { key: Z,         mods: Super,       chars: "\x1A" }
-    - { key: Key0,      mods: Super,       chars: "\x1b[48;5u" }
-    - { key: Key1,      mods: Super,       chars: "\x1b[49;5u" }
-    - { key: Key2,      mods: Super,       chars: "\x1b[50;5u" }
-    - { key: Key3,      mods: Super,       chars: "\x1b[51;5u" }
-    - { key: Key4,      mods: Super,       chars: "\x1b[52;5u" }
-    - { key: Key5,      mods: Super,       chars: "\x1b[53;5u" }
-    - { key: Key6,      mods: Super,       chars: "\x1b[54;5u" }
-    - { key: Key7,      mods: Super,       chars: "\x1b[55;5u" }
-    - { key: Key8,      mods: Super,       chars: "\x1b[56;5u" }
-    - { key: Key9,      mods: Super,       chars: "\x1b[57;5u" }
+
+    # macOS-like tmux
+    - { key: T,         mods: Command,          chars: "\x02c" }
+    - { key: Right,     mods: Command|Alt,      chars: "\x02n"}
+    - { key: Left,      mods: Command|Alt,      chars: "\x02p"}
+    - { key: Right,     mods: Command|Control,  chars: "\x02)"}
+    - { key: Left,      mods: Command|Control,  chars: "\x02("}
+    - { key: Down,      mods: Command|Control,  chars: "\x02L"}
+
+    # map Cmd to Ctrl
+    - { key: A,         mods: Command,       chars: "\x01" }
+    - { key: B,         mods: Command,       chars: "\x02" }
+    - { key: C,         mods: Command,       chars: "\x03" }
+    - { key: D,         mods: Command,       chars: "\x04" }
+    - { key: E,         mods: Command,       chars: "\x05" }
+    - { key: F,         mods: Command,       chars: "\x06" }
+    - { key: G,         mods: Command,       chars: "\x07" }
+    - { key: H,         mods: Command,       chars: "\x08" }
+    - { key: I,         mods: Command,       chars: "\x09" }
+    - { key: J,         mods: Command,       chars: "\x0A" }
+    - { key: K,         mods: Command,       chars: "\x0B" }
+    - { key: L,         mods: Command,       chars: "\x0C" }
+    - { key: M,         mods: Command,       chars: "\x0D" }
+    - { key: N,         mods: Command,       chars: "\x0E" }
+    - { key: O,         mods: Command,       chars: "\x0F" }
+    - { key: P,         mods: Command,       chars: "\x10" }
+    - { key: Q,         mods: Command,       chars: "\x11" }
+    - { key: R,         mods: Command,       chars: "\x12" }
+    - { key: S,         mods: Command,       chars: "\x13" }
+    - { key: T,         mods: Command,       chars: "\x14" }
+    - { key: U,         mods: Command,       chars: "\x15" }
+    # Keep Cmd-v for paste
+    # - { key: V,         mods: Command,       chars: "\x16" }
+    - { key: W,         mods: Command,       chars: "\x17" }
+    - { key: X,         mods: Command,       chars: "\x18" }
+    - { key: Y,         mods: Command,       chars: "\x19" }
+    - { key: Z,         mods: Command,       chars: "\x1A" }
+    - { key: Key0,      mods: Command,       chars: "\x1b[48;5u" }
+    - { key: Key1,      mods: Command,       chars: "\x1b[49;5u" }
+    - { key: Key2,      mods: Command,       chars: "\x1b[50;5u" }
+    - { key: Key3,      mods: Command,       chars: "\x1b[51;5u" }
+    - { key: Key4,      mods: Command,       chars: "\x1b[52;5u" }
+    - { key: Key5,      mods: Command,       chars: "\x1b[53;5u" }
+    - { key: Key6,      mods: Command,       chars: "\x1b[54;5u" }
+    - { key: Key7,      mods: Command,       chars: "\x1b[55;5u" }
+    - { key: Key8,      mods: Command,       chars: "\x1b[56;5u" }
+    - { key: Key9,      mods: Command,       chars: "\x1b[57;5u" }
 
 ...
 

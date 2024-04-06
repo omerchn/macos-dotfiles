@@ -13,6 +13,8 @@ return {
             keymaps = {
               view = {
                 ['q'] = ':tabclose<CR>',
+                ['<leader>gj'] = ']c',
+                ['<leader>gk'] = '[c',
               },
               file_panel = {
                 ['q'] = ':tabclose<CR>',
