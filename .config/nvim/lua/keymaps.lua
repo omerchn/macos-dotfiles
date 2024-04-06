@@ -3,12 +3,14 @@ local function map(mode, keys, cmd, desc)
 end
 
 -- Remap for dealing with word wrap
--- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
--- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- general
 map({ 'n', 'v' }, '<Space>', '<Nop>')
 map({ 'n' }, '<Esc>', '<Esc>:noh<CR>')
+
+-- always paste from unnamedplus in insert mode
 map({ 'i' }, '<C-r>', '<C-r>"')
 
 -- don't yank on delete, change and paste over

@@ -65,7 +65,7 @@ key_bindings:
     - { key: Key0,    mods: Command,  action: ResetFontSize        }
 
 
-    # macOS-like tmux
+    # macOS-like tmux shortcuts
     - { key: T,         mods: Command,          chars: "\x02c" }
     - { key: Right,     mods: Command|Alt,      chars: "\x02n"}
     - { key: Left,      mods: Command|Alt,      chars: "\x02p"}

@@ -1,3 +1,18 @@
+-- this is for Golang organize imports on save
+local function organize_imports(client, bufnr)
+  local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
+  params.context = { only = { 'source.organizeImports' } }
+
+  local resp = client.request_sync('textDocument/codeAction', params, 3000, bufnr)
+  for _, r in pairs(resp and resp.result or {}) do
+    if r.edit then
+      vim.lsp.util.apply_workspace_edit(r.edit, vim.lsp.util._get_offset_encoding())
+    else
+      vim.lsp.buf.execute_command(r.command)
+    end
+  end
+end
+
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -137,6 +152,8 @@ return {
             })
 
             vim.diagnostic.enable(bufnr)
+
+            organize_imports(client, bufnr)
           end,
         })
       end,

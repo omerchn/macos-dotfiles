@@ -108,7 +108,7 @@ local get_winbar = function()
   local current_file = get_file_display(vim.fn.expand('%:.'), '%#Normal#')
   local marks_display = get_marks_display()
 
-  local winbar = ' ' .. marks_display
+  local winbar = '  ' .. marks_display
 
   if not current_file_in_marks() then
     if marks_display ~= '' then
@@ -116,6 +116,8 @@ local get_winbar = function()
     end
     winbar = winbar .. current_file
   end
+
+  winbar = winbar .. ' %#Normal# %m'
 
   pcall(vim.api.nvim_set_option_value, 'winbar', winbar, { scope = 'local' })
 end
