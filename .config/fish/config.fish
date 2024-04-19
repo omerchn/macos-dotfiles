@@ -30,6 +30,7 @@ alias cpr='gh pr create --fill-first | pbcopy'
 alias fzf_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf'
 alias p='cd $(fzf_projects || pwd)'
 alias c='code $(fzf_projects) -r'
+alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --describe --force && cd -'
 
 # start starfish
 starship init fish | source

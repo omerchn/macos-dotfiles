@@ -1,3 +1,4 @@
+tap "espanso/espanso"
 tap "homebrew/bundle"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
@@ -21,5 +22,7 @@ brew "tmux"
 cask "alacritty"
 # Automatic tiling window manager similar to xmonad
 cask "amethyst"
+# Cross-platform Text Expander written in Rust
+cask "espanso"
 # Keyboard customiser
 cask "karabiner-elements"
