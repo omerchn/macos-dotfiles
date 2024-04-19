@@ -43,4 +43,4 @@ SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_user_paths:/opt/homebrew/opt/fzf/bin
-SETUVAR nvm_default_version:latest
+SETUVAR nvm_default_version:v21\x2e7\x2e2
