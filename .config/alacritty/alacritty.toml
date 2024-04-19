@@ -1,0 +1,281 @@
+[colors.cursor]
+cursor = "#ffffff"
+text = "#000000"
+
+[colors.primary]
+background = "#041318"
+foreground = "#ffffff"
+
+[cursor]
+blink_interval = 500
+thickness = 0.18
+vi_mode_style = "Block"
+
+[cursor.style]
+blinking = "Always"
+
+[font]
+size = 14.5
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "LBracket"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002n"
+key = "Right"
+mods = "Command|Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002p"
+key = "Left"
+mods = "Command|Alt"
+
+[[keyboard.bindings]]
+chars = "\u0002)"
+key = "Right"
+mods = "Command|Control"
+
+[[keyboard.bindings]]
+chars = "\u0002("
+key = "Left"
+mods = "Command|Control"
+
+[[keyboard.bindings]]
+chars = "\u0002L"
+key = "Down"
+mods = "Command|Control"
+
+[[keyboard.bindings]]
+chars = "\u0001"
+key = "A"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0002"
+key = "B"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0003"
+key = "C"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0004"
+key = "D"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0005"
+key = "E"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0006"
+key = "F"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0007"
+key = "G"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\b"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\t"
+key = "I"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+
+"""
+key = "J"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000B"
+key = "K"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "L"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\r"
+key = "M"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000E"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u000F"
+key = "O"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0010"
+key = "P"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0011"
+key = "Q"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0012"
+key = "R"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0013"
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0014"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0015"
+key = "U"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0018"
+key = "X"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0019"
+key = "Y"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001A"
+key = "Z"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[48;5u"
+key = "Key0"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[49;5u"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[50;5u"
+key = "Key2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[51;5u"
+key = "Key3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[52;5u"
+key = "Key4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[53;5u"
+key = "Key5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[54;5u"
+key = "Key6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[55;5u"
+key = "Key7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[56;5u"
+key = "Key8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B[57;5u"
+key = "Key9"
+mods = "Command"
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
+
+[shell]
+program = "/opt/homebrew/bin/fish"
+args = ["--login"]
+
+[window]
+decorations = "None"
+dynamic_padding = true
+option_as_alt = "Both"
+startup_mode = "Maximized"
+
+[window.padding]
+x = 0
+y = 0
