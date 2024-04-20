@@ -13,7 +13,7 @@ set PATH \
     $PATH
 
 # env vars
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 
 # aliases
 alias nv='nvim'
