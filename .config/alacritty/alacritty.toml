@@ -271,7 +271,7 @@ program = "/opt/homebrew/bin/fish"
 args = ["--login"]
 
 [window]
-decorations = "None"
+decorations = "none"
 dynamic_padding = true
 option_as_alt = "Both"
 startup_mode = "Maximized"

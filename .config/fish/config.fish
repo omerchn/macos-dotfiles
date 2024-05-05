@@ -8,6 +8,7 @@ set PATH \
     $HOME/.cargo/bin \
     $HOME/google-cloud-sdk/bin \
     /opt/homebrew/bin \
+    /opt/homebrew/opt/libpq/bin \
     $HOME/.bun/bin \
     $GOPATH/bin \
     $PATH

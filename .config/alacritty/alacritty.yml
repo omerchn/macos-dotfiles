@@ -5,7 +5,7 @@ window:
         x: 0
         y: 0
     dynamic_padding: true
-    decorations: None
+    decorations: none
     startup_mode: Maximized
     option_as_alt: Both
 
