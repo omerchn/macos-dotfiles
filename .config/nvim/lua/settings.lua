@@ -65,3 +65,17 @@ vim.opt.splitbelow = true
 
 -- change fill chars for diffview
 vim.opt.fillchars:append({ diff = '╱' })
+
+-- firenvim config
+vim.g.firenvim_config = {
+  globalSettings = { alt = "all" },
+  localSettings = {
+    [".*"] = {
+      cmdline  = "neovim",
+      content  = "text",
+      priority = 0,
+      selector = "textarea",
+      takeover = "never"
+    }
+  }
+}

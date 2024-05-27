@@ -138,6 +138,9 @@ vim.api.nvim_create_autocmd({
 }, {
   group = '_winbar',
   callback = function()
+    if vim.g.started_by_firenvim then
+      return
+    end
     local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, 'lsp_floating_window')
     if not status_ok then
       get_winbar()

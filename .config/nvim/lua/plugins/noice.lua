@@ -1,6 +1,7 @@
 return {
   'folke/noice.nvim',
   dependencies = { 'MunifTanjim/nui.nvim' },
+  cond = not vim.g.started_by_firenvim,
   config = function()
     require('noice').setup({
       -- cmdline = {
