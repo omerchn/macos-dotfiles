@@ -1,3 +1,3 @@
 function oghr --argument user
-    open https://github.com/$(ghr $user)
+    open $(ghr $user)
 end
