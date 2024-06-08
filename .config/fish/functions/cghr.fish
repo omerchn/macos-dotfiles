@@ -1,3 +1,3 @@
 function cghr --argument user
-    git clone https://github.com/$(ghr $user)
+    git clone $(ghr $user)
 end
