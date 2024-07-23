@@ -35,3 +35,10 @@ alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --describe --for
 
 # start starfish
 starship init fish | source
+
+# source local fish functions
+if test -d ./fish/functions
+    for x in ./fish/functions/*
+        source $x
+    end
+end
