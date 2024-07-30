@@ -1,5 +1,5 @@
 function dcr --argument service
-  docker compose up $service --force-recreate -d
+  docker compose restart $service
 end
 
 complete --command dcr --no-files
