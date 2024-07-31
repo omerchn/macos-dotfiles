@@ -4,5 +4,5 @@ end
 
 complete --command dcl --no-files
 for x in (docker compose ps --services)
-    complete --command dcl --arguments $x
+  complete --command dcl --arguments $x
 end

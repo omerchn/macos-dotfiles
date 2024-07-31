@@ -4,6 +4,6 @@ end
 
 complete --command dcr --no-files
 for x in (docker compose ps --services)
-    complete --command dcr --arguments $x
+  complete --command dcr --arguments $x
 end
 

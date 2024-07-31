@@ -4,5 +4,5 @@ end
 
 complete --command pmr --no-files
 for x in (npx nx show projects)
-    complete --command pmr --arguments $x
+  complete --command pmr --arguments $x
 end
