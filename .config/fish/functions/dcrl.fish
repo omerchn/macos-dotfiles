@@ -1,6 +1,5 @@
 function dcrl --argument service
-  dcr $service
-  dcl $service
+  dcr $service && dcl $service
 end
 
 complete --command dcrl --no-files
