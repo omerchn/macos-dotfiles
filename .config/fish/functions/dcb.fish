@@ -1,5 +1,5 @@
 function dcb --argument service
-  docker compose build $service && dcrl $service
+  docker compose build $service && dcr $service
 end
 
 complete --command dcb --no-files
