@@ -1,5 +1,11 @@
 function pmd --argument project
-  npx nx run $project:prisma:migrate:dev
+  if test -z "$project"
+    echo "Error: No project provided."
+    return 1
+  end
+  cd apps/$project
+  and npx prisma migrate dev
+  cd -
 end
 
 complete --command pmd --no-files
