@@ -33,6 +33,9 @@ alias p='cd $(fzf_projects || pwd)'
 alias c='code $(fzf_projects) -r'
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --describe --force && cd -'
 
+# misc
+alias gen_commit_msg='python3 ~/Desktop/personal/openai-commit-message-generator/openai-commit-message-generator.py'
+
 # start starfish
 starship init fish | source
 
