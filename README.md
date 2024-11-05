@@ -23,3 +23,4 @@ then, to restore the home directory:
 ```bash
 config restore ~
 ```
+
