@@ -1,5 +1,5 @@
 function dcu --argument service
-  docker compose up $service -d
+  docker compose -f docker-compose.yml -f docker-compose.debug.yml up $service -d
 end
 
 complete --command dcu --no-files

@@ -1,5 +1,5 @@
 function dcl --argument service
-  docker compose logs $service -f --tail 100
+  docker compose -f docker-compose.yml -f docker-compose.debug.yml logs $service -f --tail 100
 end
 
 complete --command dcl --no-files
