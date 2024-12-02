@@ -14,7 +14,7 @@ set PATH \
     $PATH
 
 # env vars
-export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --border=none --no-separator --no-scrollbar --info=hidden --color=bg+:-1'
+export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --border=none --no-separator --no-scrollbar --info=hidden' # --color=bg+:-1 to hide selected item bg
 export FZF_CTRL_R_OPTS='--prompt="Command history> "'
 
 # aliases
