@@ -22,8 +22,3 @@ function dc
   echo "Executing: $base_command $command $services"
   eval $base_command $command $services && dcl $services
 end
-
-# complete --command dc --no-files
-# for x in (docker compose ps --services)
-#   complete --command dc --arguments $x
-# end
