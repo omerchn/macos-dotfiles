@@ -39,8 +39,11 @@ alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --describe --for
 # misc
 alias gen_commit_msg='python3 ~/Desktop/personal/openai-commit-message-generator/openai-commit-message-generator.py'
 
-# start starfish
+# setup starfish
 starship init fish | source
+
+# setup zoxide
+zoxide init fish | source
 
 # source local fish functions
 if test -d ./.fish/functions
