@@ -52,11 +52,11 @@ return {
             ['aa'] = '@parameter.outer',
             ['ia'] = '@parameter.inner',
 
-            ['af'] = '@function.outer',
-            ['if'] = '@function.inner',
+            ['am'] = '@function.outer',
+            ['im'] = '@function.inner',
 
-            ['ac'] = '@call.outer',
-            ['ic'] = '@call.inner',
+            ['af'] = '@call.outer',
+            ['if'] = '@call.inner',
 
             ['iv'] = '@assignment.rhs',
             ['ik'] = '@assignment.lhs',
