@@ -1,6 +1,6 @@
 export PATH="/opt/homebrew/bin:$PATH"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -9,7 +9,7 @@ fi
 
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias reload-zsh="source ~/.zshrc"
@@ -44,7 +44,7 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 
-export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --border --no-separator --no-scrollbar --info=hidden' # --color=bg+:-1 to hide selected item bg
+export FZF_DEFAULT_OPTS='--height 90% --layout=reverse --border=none --no-separator --no-scrollbar --info=hidden' # --color=bg+:-1 to hide selected item bg
 
 # -- Use fd instead of fzf --
 
@@ -66,6 +66,7 @@ _fzf_compgen_dir() {
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
+export FZF_CTRL_R_OPTS="--prompt 'History > ' --with-nth 2.."
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
@@ -84,15 +85,8 @@ _fzf_comprun() {
   esac
 }
 
-# ---- TheFuck -----
-
-# thefuck alias
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
-
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
-
 alias cd="z"
 
 # ---- Random Aliases ----
@@ -101,17 +95,43 @@ alias ls='eza -1 --icons -s ext --group-directories-first'
 alias la='ls --all'
 alias lt='eza --git-ignore -T --icons -s ext --group-directories-first'
 alias cat='bat'
-# alias gorun='npx nodemon -q -e go --signal SIGTERM --exec go run .'
-# alias rustrun='cargo watch -c -d 0 -x run'
-# alias python='python3'
+alias rust_run_watch='cargo watch -c -d 0 -x run'
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias _cpr='gh pr create --fill-first'
-alias cpr='_cpr | pbcopy'
-alias cprd='_cpr --draft | pbcopy'
+alias _cpr='gh pr create --fill-first' # create PR
+alias cpr='_cpr | pbcopy' # create PR and copy url
+alias cprd='_cpr --draft | pbcopy' # create draft PR and copy url
 alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf'
-alias p='cd $(list_projects || pwd)'
-alias c='code $(list_projects) -r'
+alias p='cd $(list_projects || pwd)' # CD into a project
+alias c='code $(list_projects) -r' # Open a project in VSCode
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
 alias lg='lazygit'
 alias ld='lazydocker'
 alias ln='lazynpm'
+
+# ---- Docker Helpers ----
+docker_compose="docker compose -f docker-compose.yml -f docker-compose.debug.yml"
+
+function _get_service() {
+  local service=$1
+  if [ -z "$service" ]; then
+    service=$(docker compose ps --services | fzf)
+  fi
+  echo $service
+}
+
+function dcl() {
+  local service=$(_get_service $1)
+  eval $docker_compose logs $service -f --tail 100
+}
+function dcr() {
+  local service=$(_get_service $1)
+  eval $docker_compose up $service --force-recreate -d && dcl $service
+}
+function dcb() {
+  local service=$(_get_service $1)
+  eval $docker_compose build $service && dcr $service
+}
+function dcu() {
+  local service=$(_get_service $1)
+  eval $docker_compose up $service -d && dcl $service
+}
