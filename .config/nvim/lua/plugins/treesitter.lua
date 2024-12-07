@@ -49,17 +49,31 @@ return {
           lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
           keymaps = {
             -- You can use the capture groups defined in textobjects.scm
-            ['aa'] = '@parameter.outer',
-            ['ia'] = '@parameter.inner',
+            ['a='] = { query = '@assignment.outer', desc = 'Select outer part of an assignment' },
+            ['i='] = { query = '@assignment.inner', desc = 'Select inner part of an assignment' },
+            ['l='] = { query = '@assignment.lhs', desc = 'Select left hand side of an assignment' },
+            ['r='] = { query = '@assignment.rhs', desc = 'Select right hand side of an assignment' },
 
-            ['am'] = '@function.outer',
-            ['im'] = '@function.inner',
+            -- works for javascript/typescript files (custom capture in after/queries/ecma/textobjects.scm)
+            ['a:'] = { query = '@property.outer', desc = 'Select outer part of an object property' },
+            ['i:'] = { query = '@property.inner', desc = 'Select inner part of an object property' },
+            ['l:'] = { query = '@property.lhs', desc = 'Select left part of an object property' },
+            ['r:'] = { query = '@property.rhs', desc = 'Select right part of an object property' },
 
-            ['af'] = '@call.outer',
-            ['if'] = '@call.inner',
+            ['aa'] = { query = '@parameter.outer', desc = 'Select outer part of a parameter/argument' },
+            ['ia'] = { query = '@parameter.inner', desc = 'Select inner part of a parameter/argument' },
 
-            ['iv'] = '@assignment.rhs',
-            ['ik'] = '@assignment.lhs',
+            ['ai'] = { query = '@conditional.outer', desc = 'Select outer part of a conditional' },
+            ['ii'] = { query = '@conditional.inner', desc = 'Select inner part of a conditional' },
+
+            ['al'] = { query = '@loop.outer', desc = 'Select outer part of a loop' },
+            ['il'] = { query = '@loop.inner', desc = 'Select inner part of a loop' },
+
+            ['ac'] = { query = '@call.outer', desc = 'Select outer part of a function call' },
+            ['ic'] = { query = '@call.inner', desc = 'Select inner part of a function call' },
+
+            ['af'] = { query = '@function.outer', desc = 'Select outer part of a method/function definition' },
+            ['if'] = { query = '@function.inner', desc = 'Select inner part of a method/function definition' },
           },
         },
         lsp_interop = {

@@ -75,7 +75,7 @@ return {
         vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close parent'))
         vim.keymap.set('n', '<Left>', api.node.navigate.parent_close, opts('Close parent'))
 
-        vim.keymap.set('n', '<ESC>', api.tree.close, opts('Close tree'))
+        -- vim.keymap.set('n', '<ESC>', api.tree.close, opts('Close tree'))
       end,
     })
 

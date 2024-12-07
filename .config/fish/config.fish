@@ -34,13 +34,16 @@ alias cprd='_cpr --draft | pbcopy'
 alias fzf_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf'
 alias p='cd $(fzf_projects || pwd)'
 alias c='code $(fzf_projects) -r'
-alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --describe --force && cd -'
+alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
+alias lg='lazygit'
+alias ld='lazydocker'
+alias ln='lazynpm'
 
 # misc
 alias gen_commit_msg='python3 ~/Desktop/personal/openai-commit-message-generator/openai-commit-message-generator.py'
 
-# # setup starfish
-# starship init fish | source
+# setup starfish
+starship init fish | source
 
 # setup zoxide
 zoxide init fish | source

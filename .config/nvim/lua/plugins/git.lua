@@ -47,9 +47,8 @@ return {
         vim.keymap.set({ 'n', 'v' }, '<leader>gj', gs.next_hunk, { buffer = bufnr, desc = 'Next Hunk' })
         vim.keymap.set({ 'n', 'v' }, '<leader>gk', gs.prev_hunk, { buffer = bufnr, desc = 'Previous Hunk' })
         vim.keymap.set('n', '<leader>gp', gs.preview_hunk_inline, { buffer = bufnr, desc = 'Preview Hunk inline' })
-        vim.keymap.set('n', '<leader>gr', gs.reset_hunk, { buffer = bufnr, desc = 'Reset Hunk' })
-        vim.keymap.set('v', '<leader>gr', ':Gitsigns reset_hunk<cr>', { buffer = bufnr, desc = 'Reset Hunk' })
-        vim.keymap.set('n', '<leader>gR', gs.reset_buffer, { buffer = bufnr, desc = 'Reset Buffer' })
+        vim.keymap.set('n', '<leader>gu', gs.reset_hunk, { buffer = bufnr, desc = 'Reset Hunk' })
+        vim.keymap.set('n', '<leader>gr', gs.reset_buffer, { buffer = bufnr, desc = 'Reset Buffer' })
       end,
     },
   },
