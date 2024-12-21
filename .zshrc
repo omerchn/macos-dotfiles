@@ -31,13 +31,15 @@ bindkey '^[[B' history-search-forward
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# ---- NVM ----
 
-export PATH=$PATH:/Users/joseanmartinez/.spicetify
-
-export PATH="$HOME/.rbenv/shims:$PATH"
+function nvm () {
+  unfunction nvm
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  nvm $@
+}
 
 # ---- FZF -----
 
@@ -108,7 +110,9 @@ alias lg='lazygit'
 alias ld='lazydocker'
 alias ln='lazynpm'
 
-# ---- Docker Helpers ----
+bindkey \^U backward-kill-line
+
+# ---- Docker Compose Helpers ----
 docker_compose="docker compose -f docker-compose.yml -f docker-compose.debug.yml"
 
 function _get_service() {
@@ -134,4 +138,61 @@ function dcb() {
 function dcu() {
   local service=$(_get_service $1)
   eval $docker_compose up $service -d && dcl $service
+}
+
+# ---- dc mega command ----
+
+function dc() {
+  # Prompt for the command
+  command=$(printf "logs -f --tail 100\nup --force-recreate -d\nbuild\nbuild --no-cache\nup -d\n" | fzf --prompt="Command: ")
+
+  # Exit if no command was selected
+  if [ -z "$command" ]; then
+    exit 0
+  fi
+
+  # Prompt for the services
+  services=$(printf "all\n$(docker compose ps --services)" | fzf --prompt="Services: " --multi)
+
+  # Exit if no services were selected
+  if [ -z "$services" ]; then
+    exit 0
+  fi
+
+  # Handle "all" selection
+  if [ "$services" = "all" ]; then
+    services=""
+  fi
+
+  # Execute the command
+  echo "Executing: $docker_compose $command $services"
+  eval "$docker_compose $command $services" && dcl $services
+}
+
+# ---- NX Helpers ----
+nx_run="npx nx run"
+
+function _get_project() {
+  local project=$1
+  if [ -z "$project" ]; then
+    project=$(npx nx show projects | fzf)
+  fi
+  echo $project
+}
+
+function pmr() {
+  local project=$(_get_project $1)
+  eval $nx_run $project:prisma:migrate:reset --force --skip-nx-cache
+}
+
+# ---- tanstack router helpers ----
+function tsrg() {
+  local app=$1
+  if [ -z "$app" ]; then
+    echo "Error: No app provided."
+    return 1
+  fi
+  cd apps/$app
+  npx tsr generate
+  cd -
 }

@@ -10,6 +10,10 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 map({ 'n', 'v' }, '<Space>', '<Nop>')
 map({ 'n' }, '<Esc>', '<Esc>:noh<CR>')
 
+-- move faster with arrows
+map({ 'n' }, '<Down>', '5j')
+map({ 'n' }, '<Up>', '5k')
+
 -- always paste from unnamedplus in insert mode
 map({ 'i' }, '<C-r>', '<C-r>"')
 
