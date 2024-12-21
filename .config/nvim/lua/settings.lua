@@ -1,6 +1,9 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Don't wrap lines
+vim.wo.wrap = false
+
 -- Make line numbers relative
 vim.wo.number = true
 vim.wo.relativenumber = true

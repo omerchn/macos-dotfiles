@@ -27,4 +27,6 @@ return {
       vim.fn['firenvim#install'](0)
     end,
   },
+
+  'github/copilot.vim'
 }
