@@ -267,7 +267,7 @@ hide_when_typing = true
 save_to_clipboard = true
 
 [shell]
-program = "/opt/homebrew/bin/fish"
+program = "/bin/zsh"
 args = ["--login"]
 
 [window]

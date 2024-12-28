@@ -48,7 +48,7 @@ cursor:
 
 # Default shell
 shell:
-    program: /opt/homebrew/bin/fish
+    program: /bin/zsh
 args:
     - --login
 
