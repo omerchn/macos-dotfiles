@@ -130,9 +130,13 @@ _fzf_comprun() {
   esac
 }
 
+
+# Better ls
+export EZA_CONFIG_DIR="$HOME/.config/eza"
+
 # ---- Random Aliases ----
 alias vim='nvim'
-alias ls='eza -1 --icons -s ext --group-directories-first'
+alias ls='eza -x --icons -s name --group-directories-first'
 alias la='ls --all'
 alias lt='eza --git-ignore -T --icons -s ext --group-directories-first'
 alias cat='bat'
@@ -141,7 +145,7 @@ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias _cpr='gh pr create --fill-first' # create PR
 alias cpr='_cpr | pbcopy' # create PR and copy url
 alias cprd='_cpr --draft | pbcopy' # create draft PR and copy url
-alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf'
+alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --preview="eza -1 --icons -s ext --group-directories-first {}"'
 alias p='cd $(list_projects || pwd)' # CD into a project
 alias c='code $(list_projects) -r' # Open a project in VSCode
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
