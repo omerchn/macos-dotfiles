@@ -1,0 +1,18 @@
+# appearance
+font-family = JetBrains Mono
+cursor-style = block
+theme = Dark+
+
+# behavior
+shell-integration-features = no-cursor,no-title
+confirm-close-surface = false
+window-save-state = always
+
+# binds
+keybind = cmd+s=new_split:right
+keybind = cmd+d=new_split:down
+keybind = ctrl+cmd+right=next_tab
+keybind = ctrl+cmd+left=previous_tab
+keybind = ctrl+alt+right=move_tab:+1
+keybind = ctrl+alt+left=move_tab:-1
+keybind = cmd+shift+t=toggle_quick_terminal

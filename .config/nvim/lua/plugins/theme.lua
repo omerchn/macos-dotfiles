@@ -14,6 +14,7 @@ local function apply_theme()
   vim.api.nvim_set_hl(0, 'TabLine', { bg = 'None' })
   vim.api.nvim_set_hl(0, 'TabLineFill', { bg = 'None' })
   vim.api.nvim_set_hl(0, 'DiffviewDiffDelete', { bg = 'None', fg = '#444444' })
+  vim.api.nvim_set_hl(0, 'CursorLine', { bg = 'None' })
 
   -- vim.cmd.colorscheme('rose-pine')
   -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'None' })
