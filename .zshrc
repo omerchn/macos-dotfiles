@@ -65,6 +65,7 @@ alias edit-zsh="nvim ~/.zshrc"
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
 HISTSIZE=999
+HISTORY_IGNORE="*ms-vscode.js-debug*"
 setopt share_history 
 setopt hist_expire_dups_first
 setopt hist_ignore_dups

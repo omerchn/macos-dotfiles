@@ -1,7 +1,9 @@
 # appearance
+fullscreen = true
 font-family = JetBrains Mono
 cursor-style = block
 theme = Dark+
+foreground = #ffffff
 
 # behavior
 shell-integration-features = no-cursor,no-title
