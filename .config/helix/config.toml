@@ -21,6 +21,10 @@ mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
 
+[editor.inline-diagnostics]
+other-lines	= "warning"
+cursor-line	= "warning"
+
 [keys.normal]
 X = "extend_line_above"
 

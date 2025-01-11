@@ -1,6 +1,7 @@
 # appearance
 font-family = JetBrains Mono
 cursor-style = block
+cursor-style-blink = false
 theme = Dark+
 foreground = #ffffff
 window-height=510
@@ -14,8 +15,8 @@ confirm-close-surface = false
 window-save-state = always
 
 # binds
-keybind = cmd+s=new_split:right
-keybind = cmd+d=new_split:down
+# keybind = cmd+s=new_split:right
+# keybind = cmd+d=new_split:down
 keybind = ctrl+cmd+right=next_tab
 keybind = ctrl+cmd+left=previous_tab
 keybind = ctrl+alt+right=move_tab:+1

@@ -132,10 +132,11 @@ _fzf_comprun() {
 }
 
 
-# Better ls
+# ---- Exports ----
+export EDITOR="cursor --wait"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 
-# ---- Random Aliases ----
+# ---- Aliases ----
 alias vim='nvim'
 alias ls='eza -x --icons -s name --group-directories-first'
 alias la='ls --all'
@@ -251,4 +252,14 @@ function cghr() {
   local user=$1
   local REPO_NAME=$(ghr $user)
   git clone $REPO_NAME
+}
+
+# ---- Yazi ----
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
