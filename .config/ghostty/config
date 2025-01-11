@@ -1,13 +1,16 @@
 # appearance
-fullscreen = true
 font-family = JetBrains Mono
 cursor-style = block
 theme = Dark+
 foreground = #ffffff
+window-height=510
+window-width=1640
 
-# behavior
+# don't change the cursor to line, keep window title the current directory 
 shell-integration-features = no-cursor,no-title
+# don't prompt for confirmation when closing a pane
 confirm-close-surface = false
+# save windows if Ghostty is accidentally closed
 window-save-state = always
 
 # binds
@@ -18,3 +21,6 @@ keybind = ctrl+cmd+left=previous_tab
 keybind = ctrl+alt+right=move_tab:+1
 keybind = ctrl+alt+left=move_tab:-1
 keybind = cmd+shift+t=toggle_quick_terminal
+keybind = super+enter=toggle_split_zoom
+keybind = super+backspace=text:\x15
+

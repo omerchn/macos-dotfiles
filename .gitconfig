@@ -4,11 +4,11 @@
 [diff]
 	tool = vscode
 [difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+	cmd = cursor --wait --diff $LOCAL $REMOTE
 [push]
 	autoSetupRemote = true
 [core]
-	editor = code --wait
+	editor = cursor --wait
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

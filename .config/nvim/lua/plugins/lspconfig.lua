@@ -43,7 +43,7 @@ return {
       vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format({
           filter = function(client)
-            return client.name ~= 'tsserver'
+            return client.name ~= 'ts_ls'
           end,
         })
       end, { desc = 'Format current buffer with LSP' })
@@ -57,7 +57,7 @@ return {
         },
       },
       rust_analyzer = {},
-      tsserver = {},
+      ts_ls = {},
       html = {},
       cssls = {},
       lua_ls = {
@@ -128,9 +128,9 @@ return {
           return
         end
 
-        -- Tsserver usually works poorly. Sorry you work with bad languages
+        -- ts_ls usually works poorly. Sorry you work with bad languages
         -- You can remove this line if you know what you're doing :)
-        if client.name == 'tsserver' then
+        if client.name == 'ts_ls' then
           return
         end
 
