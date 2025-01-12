@@ -82,7 +82,7 @@ function nvm () {
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  nvm $@
+  nvm use
 }
 
 # ---- FZF -----
@@ -135,6 +135,7 @@ _fzf_comprun() {
 # ---- Exports ----
 export EDITOR="cursor --wait"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
+export JIRA_API_TOKEN=$(cat ~/.jira_token)
 
 # ---- Aliases ----
 alias vim='nvim'
