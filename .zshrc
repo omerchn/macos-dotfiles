@@ -150,16 +150,17 @@ alias cpr='_cpr | pbcopy' # create PR and copy url
 alias cprd='_cpr --draft | pbcopy' # create draft PR and copy url
 alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --preview="eza -1 --icons -s ext --group-directories-first {}"'
 alias p='cd $(list_projects || pwd)' # CD into a project
-alias c='code $(list_projects) -r' # Open a project in VSCode
+alias c='cursor $(list_projects) -r' # Open a project in VSCode
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
 alias lg='lazygit'
-alias ld='lazydocker'
+alias ld='DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock lazydocker'
 alias ln='lazynpm'
+alias deploy='sh ~/.scripts/deploy.sh'
 
 bindkey \^U backward-kill-line
 
 # ---- Docker Compose Helpers ----
-docker_compose="docker compose -f docker-compose.yml -f docker-compose.debug.yml"
+docker_compose="DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock docker compose -f docker-compose.yml -f docker-compose.debug.yml"
 
 function _get_service() {
   local service=$1
@@ -229,6 +230,12 @@ function _get_project() {
 function pmr() {
   local project=$(_get_project $1)
   eval $nx_run $project:prisma:migrate:reset --force --skip-nx-cache
+}
+
+function ps() {
+  local project=$(_get_project $1)
+  cd apps/$project
+  npx prisma studio
 }
 
 # ---- tanstack router ----
