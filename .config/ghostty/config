@@ -13,6 +13,9 @@ shell-integration-features = no-cursor,no-title
 confirm-close-surface = false
 # save windows if Ghostty is accidentally closed
 window-save-state = always
+# quit completely after last window closed
+quit-after-last-window-closed = true
+
 
 # binds
 # keybind = cmd+s=new_split:right

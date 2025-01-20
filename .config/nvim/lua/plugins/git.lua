@@ -3,6 +3,7 @@ return {
   'tpope/vim-rhubarb',
   {
     'NeogitOrg/neogit',
+    version = '0.0.1',
     dependencies = {
       'nvim-lua/plenary.nvim',
       {

@@ -138,6 +138,7 @@ export EZA_CONFIG_DIR="$HOME/.config/eza"
 export JIRA_API_TOKEN=$(cat ~/.jira_token)
 
 # ---- Aliases ----
+alias nvim="$HOME/bin/nvim-macos/bin/nvim"
 alias vim='nvim'
 alias ls='eza -x --icons -s name --group-directories-first'
 alias la='ls --all'
@@ -156,6 +157,9 @@ alias lg='lazygit'
 alias ld='DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock lazydocker'
 alias ln='lazynpm'
 alias deploy='sh ~/.scripts/deploy.sh'
+alias gmm='git pull origin main --no-rebase'
+alias gd='gh dash'
+alias gp='git push --no-verify'
 
 bindkey \^U backward-kill-line
 

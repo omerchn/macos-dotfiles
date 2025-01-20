@@ -26,13 +26,13 @@ return {
       require('telescope').setup({
         pickers = {
           find_files = { hidden = true },
-          oldfiles = { only_cwd = true, initial_mode = 'normal', prompt_prefix = '' },
-          git_status = { initial_mode = 'normal', prompt_prefix = '' },
-          grep_string = { initial_mode = 'normal', prompt_prefix = '' },
-          command_history = { initial_mode = 'normal', prompt_prefix = '' },
+          oldfiles = { only_cwd = true, --[[ initial_mode = 'normal', prompt_prefix = '' ]] },
+          git_status = { --[[ initial_mode = 'normal', prompt_prefix = '' ]] },
+          grep_string = { --[[ initial_mode = 'normal', prompt_prefix = '' ]] },
+          command_history = { --[[ initial_mode = 'normal', prompt_prefix = '' ]] },
           buffers = {
-            initial_mode = 'normal',
-            prompt_prefix = '',
+            -- initial_mode = 'normal',
+            -- prompt_prefix = '',
             mappings = {
               n = {
                 ['<c-x>'] = require('telescope.actions').delete_buffer,
