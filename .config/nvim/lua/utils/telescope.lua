@@ -9,7 +9,7 @@ function M.get_ivy(extra_opts)
     previewer = true,
     preview_title = '',
     layout_config = {
-      height = 0.6,
+      height = 0.8,
     },
   }
   return require('telescope.themes').get_ivy(vim.tbl_deep_extend('force', opts, extra_opts))

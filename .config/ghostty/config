@@ -4,6 +4,8 @@ cursor-style = block
 cursor-style-blink = false
 theme = Dark+
 foreground = #ffffff
+
+# to make window start at full size
 window-height=510
 window-width=1640
 
@@ -15,6 +17,8 @@ confirm-close-surface = false
 window-save-state = always
 # quit completely after last window closed
 quit-after-last-window-closed = true
+# mac os option key as alt
+macos-option-as-alt = true
 
 
 # binds

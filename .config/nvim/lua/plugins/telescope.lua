@@ -43,7 +43,7 @@ return {
             },
           },
         },
-        defaults = get_ivy({
+        defaults = ({
           mappings = {
             n = {
               ['<c-t>'] = trouble.open_with_trouble,
@@ -53,6 +53,10 @@ return {
             },
           },
           file_ignore_patterns = { 'node_modules', '.git/', '.next/', '.DS_Store' },
+          sorting_strategy = 'ascending',
+          layout_config = {
+            prompt_position = 'top',
+          },
         }),
       })
 
