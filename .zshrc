@@ -236,6 +236,12 @@ function pmr() {
   eval $nx_run $project:prisma:migrate:reset --force --skip-nx-cache
 }
 
+function pmd() {
+  local project=$(_get_project $1)
+  cd apps/$project
+  eval npx prisma migrate dev
+}
+
 function ps() {
   local project=$(_get_project $1)
   cd apps/$project
