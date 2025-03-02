@@ -164,6 +164,7 @@ alias gp='git push --no-verify'
 bindkey \^U backward-kill-line
 
 # ---- Docker Compose Helpers ----
+
 docker_compose="DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock docker compose -f docker-compose.yml -f docker-compose.debug.yml"
 
 function _get_service() {
