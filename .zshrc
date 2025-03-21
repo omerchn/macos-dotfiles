@@ -151,7 +151,8 @@ alias cpr='_cpr | pbcopy' # create PR and copy url
 alias cprd='_cpr --draft | pbcopy' # create draft PR and copy url
 alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --preview="eza -1 --icons -s ext --group-directories-first {}"'
 alias p='cd $(list_projects || pwd)' # CD into a project
-alias c='cursor $(list_projects) -r' # Open a project in VSCode
+alias c='cursor -r'  
+alias cp='c $(list_projects)' # Open a project in Cursor
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
 alias lg='lazygit'
 alias ld='DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock lazydocker'
@@ -160,6 +161,7 @@ alias deploy='sh ~/.scripts/deploy.sh'
 alias gmm='git pull origin main --no-rebase'
 alias gd='gh dash'
 alias gp='git push --no-verify'
+alias gco='git checkout'
 
 bindkey \^U backward-kill-line
 
@@ -235,6 +237,16 @@ function _get_project() {
 function pmr() {
   local project=$(_get_project $1)
   eval $nx_run $project:prisma:migrate:reset --force --skip-nx-cache
+}
+
+function pd() {
+  local project=$(_get_project $1)
+  eval $nx_run $project:prisma:migrate:deploy --force --skip-nx-cache
+}
+
+function pgt() {
+  local project=$(_get_project $1)
+  eval $nx_run $project:prisma:generate-types --skip-nx-cache
 }
 
 function pmd() {
