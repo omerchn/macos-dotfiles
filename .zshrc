@@ -54,6 +54,8 @@ zstyle ':fzf-tab:*' fzf-flags --height 90%
 
 # add homebrew to path
 export PATH="/opt/homebrew/bin:$PATH"
+# add scripts to path
+export PATH="$HOME/.scripts:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -155,19 +157,26 @@ alias c='cursor -r'
 alias cp='c $(list_projects)' # Open a project in Cursor
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
 alias lg='lazygit'
-alias ld='DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock lazydocker'
+# alias ld='DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock lazydocker'
+alias ld='lazydocker'
 alias ln='lazynpm'
 alias deploy='sh ~/.scripts/deploy.sh'
-alias gmm='git pull origin main --no-rebase'
 alias gd='gh dash'
+alias gm='git pull --no-rebase origin'
+alias gmm='gm main'
 alias gp='git push --no-verify'
-alias gco='git checkout'
+alias grl='git reset HEAD~'
+alias ghpr='gh pr view --web'
+
+gc() {
+  git add -A && git commit --no-verify -m "$*"
+}
 
 bindkey \^U backward-kill-line
 
 # ---- Docker Compose Helpers ----
 
-docker_compose="DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock docker compose -f docker-compose.yml -f docker-compose.debug.yml"
+docker_compose="docker compose -f docker-compose.yml -f docker-compose.debug.yml"
 
 function _get_service() {
   local service=$1
@@ -229,7 +238,7 @@ nx_run="npx nx run"
 function _get_project() {
   local project=$1
   if [ -z "$project" ]; then
-    project=$(npx nx show projects | fzf)
+    project=$(npx nx show projects -p "apps/**" | fzf)
   fi
   echo $project
 }

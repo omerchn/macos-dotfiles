@@ -2,8 +2,8 @@
 	name = Omer Cohen
 	email = omercohen990@gmail.com
 [diff]
-	tool = vscode
-[difftool "vscode"]
+	tool = cursor
+[difftool "cursor"]
 	cmd = cursor --wait --diff $LOCAL $REMOTE
 [push]
 	autoSetupRemote = true
