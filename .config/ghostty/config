@@ -1,9 +1,11 @@
 # appearance
 font-family = JetBrains Mono
-cursor-style = block
+cursor-style = bar
 cursor-style-blink = false
 theme = Dark+
 foreground = #ffffff
+
+adjust-cursor-thickness=2
 
 # to make window start at full size
 window-height=510

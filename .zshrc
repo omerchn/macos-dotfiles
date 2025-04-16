@@ -52,6 +52,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons -s ext --group-direc
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' fzf-flags --height 90%
 
+# add local bin to path
+export PATH="~/.local/bin:$PATH"
 # add homebrew to path
 export PATH="/opt/homebrew/bin:$PATH"
 # add scripts to path
@@ -166,7 +168,7 @@ alias gm='git pull --no-rebase origin'
 alias gmm='gm main'
 alias gp='git push --no-verify'
 alias grl='git reset HEAD~'
-alias ghpr='gh pr view --web'
+alias vpr='gh pr view --web'
 
 gc() {
   git add -A && git commit --no-verify -m "$*"
