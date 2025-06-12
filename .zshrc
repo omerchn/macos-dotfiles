@@ -155,8 +155,7 @@ alias cpr='_cpr | pbcopy' # create PR and copy url
 alias cprd='_cpr --draft | pbcopy' # create draft PR and copy url
 alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --preview="eza -1 --icons -s ext --group-directories-first {}"'
 alias p='cd $(list_projects || pwd)' # CD into a project
-alias c='cursor -r'  
-alias cp='c $(list_projects)' # Open a project in Cursor
+alias c='cursor -r $(list_projects)' # Open a project in Cursor
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
 alias lg='lazygit'
 # alias ld='DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock lazydocker'
@@ -268,7 +267,7 @@ function pmd() {
 
 function ps() {
   local project=$(_get_project $1)
-  cd apps/$project
+  cd ~/Desktop/work/central-manager/apps/$project
   npx prisma studio
 }
 
@@ -304,4 +303,15 @@ function y() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+# Added by Windsurf
+export PATH="/Users/omercohen/.codeium/windsurf/bin:$PATH"
+
+# Create new project
+function np() {
+  local proj_dir=$1
+  cd ~/Desktop/personal
+  mkdir $proj_dir
+  cursor $proj_dir -r
 }

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Check if --prod flag is provided
+if [[ "$1" == "--prod" ]]; then
+    workflow="promote-staging-to-production.yaml"
+    echo "Running staging to production promotion workflow"
+else
+    workflow="promote-dev-to-staging.yaml"
+    echo "Running dev to staging promotion workflow"    
+fi
+
+# Pipe projects to fzf with multi-select enabled
+selections=$(printf "🙅 None\norchid-external-integrations\ndiscovery-worker\nagents-gateway\nbackoffice-bff\nauthorization\nconfiguration\ndistribution\nnotification\norganization\nintegration\ncdc-worker\norchid-bff\nframework\nagent\nrule\ntask\napp\ntag" | fzf --multi --header "Select services to promote")
+
+# If "None" is selected, clear all other selections
+if echo "$selections" | grep -q "🙅 None"; then
+    selected_services='[""]'
+else
+    selected_services=$(echo "$selections" | jq -R -s -c 'split("\n")[:-1]')
+fi
+
+echo "Selected services: $selected_services"
+
+# Function to get y/n input
+get_yes_no() {
+    while true; do
+        read -p "$1 (y/n): " yn
+        case $yn in
+            [Yy]* ) echo "true"; return;;
+            [Nn]* ) echo "false"; return;;
+            * ) echo "Please answer y or n.";;
+        esac
+    done
+}
+
+# Get user preferences for console and backoffice
+promote_console=$(get_yes_no "Do you want to promote console?")
+promote_backoffice=$(get_yes_no "Do you want to promote backoffice?")
+
+# Build the command with required flags
+cmd="gh workflow run $workflow"
+cmd+=" -f promoteConsole=$promote_console"
+cmd+=" -f promoteBackoffice=$promote_backoffice"
+
+# Add services flag if services were selected, otherwise add disableBackend=true
+if [ "$selected_services" != '[""]' ] && [ "$selected_services" != "null" ]; then
+    cmd+=" -f services='$selected_services'"
+else
+    cmd+=" -f disableBackend=true"
+fi
+
+# Execute the command
+eval "$cmd"
+
