@@ -5,7 +5,7 @@ cursor-style-blink = false
 theme = Dark+
 foreground = #ffffff
 
-adjust-cursor-thickness=2
+adjust-cursor-thickness=1
 
 # to make window start at full size
 window-height=510

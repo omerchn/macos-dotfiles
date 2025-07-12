@@ -61,6 +61,7 @@ return {
             vim.api.nvim_feedkeys(key, 'm', false)
           end
           vim.keymap.set('n', 'l', forward, { buffer = buf_id })
+          vim.keymap.set('n', '<enter>', forward, { buffer = buf_id })
           vim.keymap.set('n', '<right>', forward, { buffer = buf_id })
           vim.keymap.set('n', '<left>', backward, { buffer = buf_id })
         end,
