@@ -7,7 +7,7 @@ return {
   },
   config = function()
     vim.keymap.set('n', '<leader>e', function()
-      require('nvim-tree.api').tree.toggle({ focus = false })
+      require('nvim-tree.api').tree.toggle({ focus = true })
     end, { silent = true, desc = '[E]xplore' })
 
     require('nvim-tree').setup({
