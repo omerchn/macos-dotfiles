@@ -18,6 +18,7 @@ return {
 
       vim.keymap.set('n', '<leader>m', function()
         MiniFiles.open(vim.api.nvim_buf_get_name(0))
+        -- MiniFiles.reveal_cwd()
       end, { silent = true, desc = '[M]ini Files' })
 
       local map_split = function(buf_id, lhs, direction)

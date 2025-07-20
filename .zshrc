@@ -168,6 +168,7 @@ alias gmm='gm main'
 alias gp='git push --no-verify'
 alias grl='git reset HEAD~'
 alias vpr='gh pr view --web'
+alias gco='git checkout'
 
 gc() {
   git add -A && git commit --no-verify -m "$*"
