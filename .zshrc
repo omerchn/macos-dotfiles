@@ -153,7 +153,7 @@ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias _cpr='gh pr create --fill-first' # create PR
 alias cpr='_cpr | pbcopy' # create PR and copy url
 alias cprd='_cpr --draft | pbcopy' # create draft PR and copy url
-alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --preview="eza -1 --icons -s ext --group-directories-first {}"'
+alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --preview="eza --icons -s ext --group-directories-first {}"'
 alias p='cd $(list_projects || pwd)' # CD into a project
 alias c='cursor -r $(list_projects)' # Open a project in Cursor
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
@@ -262,14 +262,16 @@ function pgt() {
 
 function pmd() {
   local project=$(_get_project $1)
-  cd apps/$project
+  cd ~/Desktop/work/central-manager/apps/$project
   eval npx prisma migrate dev
+  cd -
 }
 
 function ps() {
   local project=$(_get_project $1)
   cd ~/Desktop/work/central-manager/apps/$project
   npx prisma studio
+  cd -
 }
 
 # ---- tanstack router ----
@@ -279,7 +281,7 @@ function tsrg() {
     echo "Error: No app provided."
     return 1
   fi
-  cd apps/$app
+  cd ~/Desktop/work/central-manager/apps/$app
   npx tsr generate
   cd -
 }
