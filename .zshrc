@@ -318,3 +318,4 @@ function np() {
   mkdir $proj_dir
   cursor $proj_dir -r
 }
+. "$HOME/.local/bin/env"
