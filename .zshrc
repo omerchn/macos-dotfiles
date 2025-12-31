@@ -319,3 +319,11 @@ function np() {
   cursor $proj_dir -r
 }
 . "$HOME/.local/bin/env"
+
+# pnpm
+export PNPM_HOME="/Users/omercohen/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
