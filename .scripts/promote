@@ -10,7 +10,7 @@ else
 fi
 
 # Pipe projects to fzf with multi-select enabled
-selections=$(printf "🙅 None\norchid-external-integrations\ndiscovery-worker\nagents-gateway\nbackoffice-bff\nauthorization\nconfiguration\ndistribution\nnotification\norganization\nintegration\ncdc-worker\norchid-bff\nframework\nagent\nrule\ntask\napp\ntag\nvault\nagents-audits" | fzf --multi --header "Select services to promote")
+selections=$(printf "🙅 None\norchid-external-integrations\ndiscovery-worker\nagents-gateway\nbackoffice-bff\nauthorization\nconfiguration\ndistribution\nnotification\norganization\nintegration\ncdc-worker\norchid-bff\nframework\nagent\nrule\ntask\napp\ntag\nvault\nagents-audits\norchid-public-api" | fzf --multi --header "Select services to promote")
 
 # If "None" is selected, clear all other selections
 if echo "$selections" | grep -q "🙅 None"; then

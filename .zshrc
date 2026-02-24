@@ -174,11 +174,19 @@ gc() {
   git add -A && git commit --no-verify -m "$*"
 }
 
+# create PR, enable auto merge, and copy url
+cprm() {
+  local pr_url=$(_cpr)
+  echo "$pr_url" | pbcopy
+  gh pr merge "$pr_url" --auto --squash
+  echo "$pr_url"
+}
+
 bindkey \^U backward-kill-line
 
 # ---- Docker Compose Helpers ----
 
-docker_compose="docker compose -f docker-compose.yml -f docker-compose.debug.yml"
+docker_compose="docker compose -f docker-compose.yml"
 
 function _get_service() {
   local service=$1
@@ -204,6 +212,8 @@ function dcu() {
   local service=$(_get_service $1)
   eval $docker_compose up $service -d && dcl $service
 }
+
+alias dci='dcb orchid-install && dcb orchid-dev'
 
 # ---- dc mega command ----
 
@@ -327,3 +337,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
