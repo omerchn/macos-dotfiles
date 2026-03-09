@@ -153,12 +153,12 @@ alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias _cpr='gh pr create --fill-first' # create PR
 alias cpr='_cpr | pbcopy' # create PR and copy url
 alias cprd='_cpr --draft | pbcopy' # create draft PR and copy url
+alias am='gh pr merge --auto --squash' # auto merge PR (squash)
 alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --preview="eza --icons -s ext --group-directories-first {}"'
 alias p='cd $(list_projects || pwd)' # CD into a project
 alias c='cursor -r $(list_projects)' # Open a project in Cursor
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
 alias lg='lazygit'
-# alias ld='DOCKER_HOST=unix:///Users/omercohen/.colima/default/docker.sock lazydocker'
 alias ld='lazydocker'
 alias ln='lazynpm'
 alias deploy='sh ~/.scripts/deploy.sh'
@@ -169,6 +169,8 @@ alias gp='git push --no-verify'
 alias grl='git reset HEAD~'
 alias vpr='gh pr view --web'
 alias gco='git checkout'
+alias prco='gh pr checkout'
+alias cc='claude --dangerously-skip-permissions'
 
 gc() {
   git add -A && git commit --no-verify -m "$*"
@@ -180,6 +182,19 @@ cprm() {
   echo "$pr_url" | pbcopy
   gh pr merge "$pr_url" --auto --squash
   echo "$pr_url"
+}
+
+# re-request reviews from all previous reviewers
+rereview() {
+  local reviewers=$(gh pr view --json reviews,reviewRequests --jq '([.reviews[].author.login] + [.reviewRequests[].login]) | unique | .[]')
+  if [ -z "$reviewers" ]; then
+    echo "No reviewers found"
+    return 1
+  fi
+  echo "$reviewers" | while read -r reviewer; do
+    echo "Adding reviewer: $reviewer"
+    gh pr edit --add-reviewer "$reviewer"
+  done
 }
 
 bindkey \^U backward-kill-line
@@ -339,3 +354,5 @@ esac
 # pnpm end
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
