@@ -272,7 +272,7 @@ function _get_project() {
 
 function pmr() {
   local project=$(_get_project $1)
-  eval $nx_run $project:prisma:migrate:reset --force --skip-nx-cache
+  eval $nx_run $project:prisma:migrate:reset --skip-nx-cache
 }
 
 function pd() {
@@ -287,14 +287,14 @@ function pgt() {
 
 function pmd() {
   local project=$(_get_project $1)
-  cd ~/Desktop/work/central-manager/apps/$project
+  cd ~/Desktop/work/core/apps/$project
   eval npx prisma migrate dev
   cd -
 }
 
 function ps() {
   local project=$(_get_project $1)
-  cd ~/Desktop/work/central-manager/apps/$project
+  cd ~/Desktop/work/core/apps/$project
   npx prisma studio
   cd -
 }
@@ -306,7 +306,7 @@ function tsrg() {
     echo "Error: No app provided."
     return 1
   fi
-  cd ~/Desktop/work/central-manager/apps/$app
+  cd ~/Desktop/work/core/apps/$app
   npx tsr generate
   cd -
 }
@@ -356,3 +356,15 @@ esac
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+# opencode
+export PATH=/Users/omercohen/.opencode/bin:$PATH
+
+function remove_worktrees() {
+  git worktree list --porcelain | grep 'worktree ' | cut -d' ' -f2 | while read -r wt_path; do
+      if [ "$wt_path" != "$(pwd)" ] && [ "$wt_path" != "." ]; then
+          echo "Removing worktree at $wt_path..."
+          git worktree remove --force "$wt_path"
+      fi
+  done
+}

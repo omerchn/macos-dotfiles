@@ -28,7 +28,21 @@ gh pr view <PR_NUMBER> --repo <GITHUB_REPO> --json title,author,headRefName,base
 
 Extract the **title**, **author login**, **head branch**, **base branch**, **body/description**, and **list of changed files** (with additions/deletions per file).
 
-### 2. Resolve Jira Ticket from Branch Name
+### 2. Add Yourself as Reviewer & React to PR
+
+React with the eyes emoji on the PR description to signal you're looking at it.
+
+First, resolve your GitHub username:
+```bash
+gh api user -q .login
+```
+
+Second, add the eyes reaction.
+```bash
+gh api repos/<OWNER>/<REPO>/issues/<PR_NUMBER>/reactions -f content=eyes
+```
+
+### 3. Resolve Jira Ticket from Branch Name
 
 Extract the Jira ticket key from the branch name prefix. The pattern is typically `<PROJECT>-<NUMBER>` at the start of the branch name (e.g., `CORE-1234-add-feature` → ticket is `CORE-1234`).
 
@@ -44,7 +58,7 @@ Collect the **Jira Ticket Summary**:
 
 If no ticket key can be extracted from the branch name, note this and move on.
 
-### 3. Create Vibe Kanban Issue & Start Workspace
+### 4. Create Vibe Kanban Issue & Start Workspace
 
 Create a Vibe Kanban issue to track this PR review, then start a workspace that will perform the entire review.
 
@@ -62,102 +76,93 @@ Create a Vibe Kanban issue to track this PR review, then start a workspace that 
    - `project_id`: Use the project ID from step 2
    - `priority`: `"medium"`
 4. **List repos** using `mcp__vibe_kanban__list_repos` to find the matching repo ID. Match the repo name from the GitHub `OWNER/REPO` against the available Vibe Kanban repos (case-insensitive). If no match is found, pick the closest match or use "core" as default.
-5. **Start a workspace** using `mcp__vibe_kanban__start_workspace`:
+5. **Start the review workspace** using `mcp__vibe_kanban__start_workspace`:
    - `name`: `"PR Review #<PR_NUMBER>"`
    - `executor`: `"CLAUDE_CODE"`
    - `issue_id`: The issue ID from step 3
-   - `repositories`: Use the matched repo ID with branch `"main"`
-   - `prompt`: Build the prompt by filling in all `<PLACEHOLDER>` values below with the actual data gathered in steps 1-2. The prompt must be the **entire text below** (from `--- BEGIN PROMPT ---` to `--- END PROMPT ---`), with placeholders replaced:
+   - `repositories`: Use the matched repo ID with branch - the PRs branch from remote origin. If it's `core` repo - then use the `core-worktrees` repo.
+   - `prompt`: Build the prompt using the template below. Replace all `<PLACEHOLDERS>` with actual values. If the Jira ticket was successfully fetched, fill in the Jira section; otherwise use `"N/A"` for those fields.
 
---- BEGIN PROMPT ---
+--- BEGIN REVIEW PROMPT ---
 
-# PR Review: <PR_TITLE> (#<PR_NUMBER>)
+/review <PR_URL>
 
-## Context
+## Jira Ticket Context
 
-- **Repo:** <OWNER/REPO>
-- **PR:** #<PR_NUMBER>
-- **Author:** <AUTHOR>
-- **Branch:** <HEAD_BRANCH> → <BASE_BRANCH>
-- **PR Description:** <PR_BODY>
-- **Jira Ticket:** <JIRA_SUMMARY or "No Jira ticket found">
+- **Ticket:** <JIRA_TICKET_KEY or "N/A">
+- **Title:** <JIRA_TICKET_TITLE or "N/A">
+- **Status:** <JIRA_STATUS or "N/A">
+- **Description:** <JIRA_DESCRIPTION_FIRST_500_CHARS or "N/A">
+- **Acceptance Criteria:** <JIRA_ACCEPTANCE_CRITERIA or "N/A">
 
-## Changed Files
+--- END REVIEW PROMPT ---
 
-<LIST_OF_CHANGED_FILES with additions/deletions per file>
+The `/review` command must always be the **first line** of the prompt. ALWAYS use `/review`, NEVER `/code-review`.
 
-## Instructions
+6. **Start a second annotation workspace** using `mcp__vibe_kanban__start_workspace`:
+   - `name`: `"PR Annotation #<PR_NUMBER>"`
+   - `executor`: `"CLAUDE_CODE"`
+   - `issue_id`: The issue ID from step 3
+   - `repositories`: Same repo ID as above, same PR branch from remote origin (same `core-worktrees` rule applies).
+   - `prompt`: The exact text below, with `<PR_NUMBER>` and `<OWNER/REPO>` replaced:
 
-You are reviewing PR #<PR_NUMBER> in <OWNER/REPO>. Perform a thorough code review following the steps below.
+--- BEGIN ANNOTATION PROMPT ---
 
-### Step 1: Changed Files Overview
+You are explaining the changes in PR #<PR_NUMBER> (<OWNER/REPO>) so a human reviewer can understand **why** each change was made — without needing to read the full files.
 
-List all changed files grouped by category. Determine the order for drill-down:
+**Important:** Do NOT modify any files, do NOT run `git reset`, do NOT insert comments into source code. Your only output is text explaining the diffs.
 
-1. **Configuration files** — `*.json`, `*.yaml`, `*.yml`, `*.toml`, `*.env*`, `Dockerfile*`, `*.config.*`, `tsconfig*`, `nx.json`, `project.json`, `package.json`, `helm/**`, etc.
-2. **Contracts / Types / DTOs** — files containing types, interfaces, contracts, DTOs, schemas, Zod definitions, `*.dto.ts`, `*.contract.ts`, `*.types.ts`, `*.schema.ts`, etc.
-3. **Database / Migrations** — Prisma schemas, migrations, entity files
-4. **Logic / Services / Controllers** — `*.service.ts`, `*.controller.ts`, `*.resolver.ts`, `*.handler.ts`, business logic files
-5. **Tests** — `*.spec.ts`, `*.test.ts`, `*.e2e-spec.ts`
-6. **Other** — everything else
+## Step 1: Get the diff
 
-Present a summary table showing each file, its category, and lines added/removed.
+```bash
+git fetch origin
+git diff origin/main...HEAD -- . ':!*.spec.*' ':!*.test.*' ':!*.e2e-spec.*' ':!**/__tests__/**' ':!**/test/**'
+```
 
-### Step 2: File-by-File Drill-Down
+This gives you the full diff of non-test files changed in this PR.
 
-Go through each changed file **in the category order above**. For each file:
+## Step 2: Collect changed file list
 
-1. Show the **full diff** of the file:
-   ```bash
-   gh pr diff <PR_NUMBER> --repo <OWNER/REPO> -- <FILE_PATH>
-   ```
-   If the above doesn't support per-file filtering, get the full diff and extract the relevant file's hunk:
-   ```bash
-   gh pr diff <PR_NUMBER> --repo <OWNER/REPO>
-   ```
+```bash
+git diff --name-only origin/main...HEAD -- . ':!*.spec.*' ':!*.test.*' ':!*.e2e-spec.*' ':!**/__tests__/**' ':!**/test/**'
+```
 
-2. Provide **analysis** of the changes:
-   - What changed and why (infer from context, PR description, and Jira ticket)
-   - Any concerns about correctness, edge cases, or architectural fit
-   - How this file's changes relate to other changed files in the PR
+## Step 3: Analyze and explain each logical block
 
-Present each file with a clear header showing the file path and category.
+For each changed file, read the diff and the surrounding source code for context. Break the diff into **logical blocks** — a new function, a modified conditional, a new constant, a class/method change, an import group, etc.
 
-### Step 3: Suggested Review Comments
+For each logical block, output:
 
-After completing the file-by-file analysis, identify potential issues. Specifically, look for:
+1. **The diff** — show the relevant hunk (fenced in a code block with the file's language for syntax highlighting)
+2. **Why** — explain in 1–3 sentences the motivation behind this change. Infer from the diff shape, surrounding code, PR description, and Jira context. Focus on intent and reasoning, not a description of what the code literally does.
 
-- Bugs and correctness issues
-- Architectural concerns
-- Missing edge cases
-- Contract/type mismatches across changed files
-- CLAUDE.md compliance issues
+### Output format
 
-**CRITICAL RULES for suggested comments:**
-- **NEVER post or leave any comments on the PR** — only present suggestions to the user
-- **Every suggested comment MUST be phrased as a question** — since these are comments the user (who didn't write them) would leave, they should be inquisitive rather than declarative
-- For example, instead of "This should handle the null case", write "Should this also handle the null case? What happens if `value` is undefined here?"
-- Instead of "Missing error handling", write "What happens if this call fails? Should we add error handling here?"
+Present your analysis grouped by file, like this:
 
-Present suggested comments in this format:
+```
+### `path/to/file.ts`
 
-## Suggested Review Comments
+\`\`\`diff
+<hunk>
+\`\`\`
+**Why:** <1–3 sentence explanation of motivation/intent>
 
-### Comment 1 — [Severity: Critical/Important/Minor]
-**File:** `path/to/file.ts` L42-45
-**Question:** Could this lead to a race condition if two requests arrive simultaneously? What ensures mutual exclusion here?
+\`\`\`diff
+<hunk>
+\`\`\`
+**Why:** <1–3 sentence explanation of motivation/intent>
+```
 
-### Comment 2 — [Severity: Critical/Important/Minor]
-**File:** `path/to/other-file.ts` L18
-**Question:** Should this new field also be added to the DTO validation schema? It seems like the contract and the handler expect different shapes — is that intentional?
+Skip trivial changes (whitespace-only, auto-generated imports with no semantic meaning). If a file is entirely new, present key sections rather than every line.
 
-After presenting all suggestions, ask the user: **"Would you like me to refine any of these comments, or are there any you'd like to drop?"**
+## Step 4: Summary
 
-Do NOT post anything to GitHub. This is purely advisory.
+After all files are covered, add a brief **TL;DR** section (3–5 bullets) summarizing the overall intent of the PR at a high level.
 
---- END PROMPT ---
+--- END ANNOTATION PROMPT ---
 
 Present a summary to the user:
 - Kanban issue title and ID
-- Workspace name and status
-- Let them know the review is running in the workspace
+- Both workspace names and statuses
+- Let them know the review is running in the first workspace and the annotation is running in the second
