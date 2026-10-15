@@ -56,13 +56,13 @@ Stage all changes, create a conventional commit message, and push.
    git commit -m "type(scope): description"
    ```
 
-6. **Push:**
+6. **Push** (with `--no-verify` to skip pre-push hooks):
    ```bash
-   git push
+   git push --no-verify
    ```
    If no upstream is set:
    ```bash
-   git push -u origin $(git branch --show-current)
+   git push --no-verify -u origin $(git branch --show-current)
    ```
 
 7. **Report** the commit hash and pushed branch to the user.
@@ -71,7 +71,7 @@ Stage all changes, create a conventional commit message, and push.
 
 - **Never push to `main` or `master`** — if the current branch is `main` or `master`, refuse and tell the user to switch branches. No exceptions.
 - **Resolve project from context when in `work` dir** — if cwd is the top-level `work` directory, infer which sub-project to operate on from the conversation context (files edited, topics discussed). Ask the user only if ambiguous.
-- **Never use `--no-verify`** — all commits and pushes must run hooks.
+- **Commits must run hooks** — never use `--no-verify` on `git commit`. Pushes use `--no-verify` to skip pre-push hooks.
 - **Always `git add -A`** — include all working tree changes (staged, unstaged, untracked).
 - **Never ask** the user to confirm the commit message — just do it. If the message is wrong, they'll say so.
 - **Never skip the push** — commit and push are one atomic action in this skill.

@@ -144,7 +144,7 @@ export JIRA_API_TOKEN=$(cat ~/.jira_token)
 # ---- Aliases ----
 alias nvim="$HOME/bin/nvim-macos/bin/nvim"
 alias vim='nvim'
-alias ls='eza -x --icons -s name --group-directories-first'
+# alias ls='eza -x --icons -s name --group-directories-first'
 alias la='ls --all'
 alias lt='eza --git-ignore -T --icons -s ext --group-directories-first'
 alias cat='bat'
@@ -154,7 +154,7 @@ alias _cpr='gh pr create --fill-first' # create PR
 alias cpr='_cpr | pbcopy' # create PR and copy url
 alias cprd='_cpr --draft | pbcopy' # create draft PR and copy url
 alias am='gh pr merge --auto --squash' # auto merge PR (squash)
-alias list_projects='find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d | fzf --preview="eza --icons -s ext --group-directories-first {}"'
+alias list_projects='{ find ~/Desktop ~/Desktop/work ~/Desktop/personal ~/.config -mindepth 1 -maxdepth 1 -type d; echo ~/.claude/skills; } | fzf --preview="eza --icons -s ext --group-directories-first {}"'
 alias p='cd $(list_projects || pwd)' # CD into a project
 alias c='cursor -r $(list_projects)' # Open a project in Cursor
 alias brewdump='cd ~ && brew bundle dump --casks --taps --brews --force && cd -'
@@ -169,7 +169,7 @@ alias gp='git push --no-verify'
 alias grl='git reset HEAD~'
 alias vpr='gh pr view --web'
 alias gco='git checkout'
-alias prco='gh pr checkout'
+alias pr='gh pr checkout'
 alias cc='claude --dangerously-skip-permissions'
 
 gc() {
@@ -287,14 +287,14 @@ function pgt() {
 
 function pmd() {
   local project=$(_get_project $1)
-  cd ~/Desktop/work/core/apps/$project
+  cd ./apps/$project
   eval npx prisma migrate dev
   cd -
 }
 
 function ps() {
   local project=$(_get_project $1)
-  cd ~/Desktop/work/core/apps/$project
+  cd ./apps/$project
   npx prisma studio
   cd -
 }
@@ -306,7 +306,7 @@ function tsrg() {
     echo "Error: No app provided."
     return 1
   fi
-  cd ~/Desktop/work/core/apps/$app
+  cd ./apps/$app
   npx tsr generate
   cd -
 }
@@ -368,3 +368,16 @@ function remove_worktrees() {
       fi
   done
 }
+
+# SSH Lab
+function ssh_lab() {
+  local ip=$1
+  if [ -z "$ip" ]; then
+    echo "Error: No IP provided."
+    return 1
+  fi
+  ssh -i ~/.ssh/lab.pem root@$ip
+}
+
+# temporal-safe: IP pinning breaks TLS under Cloudflare WARP
+export TEMPORAL_NO_IP_PIN=1

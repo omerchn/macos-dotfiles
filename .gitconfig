@@ -7,8 +7,8 @@
 	cmd = cursor --wait --diff $LOCAL $REMOTE
 [push]
 	autoSetupRemote = true
-[core]
-	editor = cursor --wait
+; [core]
+; 	editor = cursor --wait
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

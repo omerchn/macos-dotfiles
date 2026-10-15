@@ -1,0 +1,79 @@
+#!/bin/bash
+# Lists open, non-draft PRs (updated in the last 14 days) authored by members of the
+# given teams that have no human review yet, lets you pick some in fzf, and opens a
+# Ghostty tab running `cc "/review-pr <url>"` for each pick.
+# usage: review-team-prs [--dry-run]
+set -euo pipefail
+
+# fzf preview: PR description on the left, colored tree of changed files on the right
+if [ "${1:-}" = "--preview" ]; then
+  half=$(( ${FZF_PREVIEW_COLUMNS:-160} / 2 - 2 ))
+  api="repos/$(sed -E 's#https://github.com/([^/]+/[^/]+)/pull/#\1/pulls/#' <<<"$2")"
+  pr=$(gh api "$api")
+  paste \
+    <({ echo "DESCRIPTION"; echo; jq -r '.body // "(no description)"' <<<"$pr" | tr -d '\r' | expand | fold -s -w "$half"; }) \
+    <(gh api "$api/files" --paginate --jq '.[] | [.status, .filename, .additions, .deletions] | @tsv' \
+      | awk -F'\t' -v h="$(jq -r '"FILES (\(.changed_files))  \u001b[32m+\(.additions)\u001b[0m \u001b[31m-\(.deletions)\u001b[0m"' <<<"$pr")" 'NR == 1 { print h; print "" } {
+          n = split($2, p, "/")
+          for (i = 1; i < n; i++)  # print each directory level the previous path did not share
+            if (p[i] != prev[i] || i > pn) { printf "%*s\033[34m%s/\033[0m\n", 2*(i-1), "", p[i]; for (j = i+1; j <= pn; j++) prev[j] = "" }
+          c = $1 == "added" ? 32 : $1 == "removed" ? 31 : 33
+          printf "%*s\033[%dm%s\033[0m \033[2m+%s -%s\033[0m\n", 2*(n-1), "", c, p[n], $3, $4
+          pn = n - 1; for (i = 1; i < n; i++) prev[i] = p[i]
+        }') \
+    | awk -F'\t' -v w="$half" '{ printf "%-" w "s \033[2m│\033[0m %s\n", $1, $2 }'
+  exit 0
+fi
+
+ORG=Orchid-Security
+TEAMS=(integration backend-data)
+
+me=$(gh api user --jq .login)
+authors=$(for t in "${TEAMS[@]}"; do
+  gh api "orgs/$ORG/teams/$t/members" --paginate --jq '.[].login'
+done | sort -u | grep -vx "$me") # can't review your own PRs
+
+rows=$(for a in $authors; do
+  gh api graphql -f q="org:$ORG is:pr is:open draft:false author:$a updated:>=$(date -v-14d +%F)" -f query='
+    query($q: String!) {
+      search(query: $q, type: ISSUE, first: 50) {
+        nodes { ... on PullRequest {
+          url number title createdAt changedFiles
+          author { login } repository { name }
+          reviews(first: 100) { nodes { author { __typename login } } }
+          reviewRequests(first: 50) { nodes { requestedReviewer { ... on User { login } } } }
+        } }
+      }
+    }' --jq '.data.search.nodes[]
+      | .author.login as $pa | select([.reviews.nodes[].author | select(.__typename != "Bot" and .login != $pa)] | length == 0)
+      | select([.reviewRequests.nodes[].requestedReviewer.login] | index("'"$me"'") | not)
+      | [.url, "\(.repository.name)#\(.number)", .title[:60], .author.login, "\(.changedFiles)",
+         .createdAt[:10]] | @tsv'
+done | sort -t$'\t' -k6r)
+
+[ -z "$rows" ] && { echo "No unreviewed PRs."; exit 0; }
+
+# url stays in column 1 (hidden) so the picked lines map back to PRs
+picked=$({ printf 'URL\tPR\tTITLE\tAUTHOR\tFILES\tCREATED\n'; echo "$rows"; } \
+  | column -t -s $'\t' \
+  | fzf --multi --header-lines=1 --with-nth=2.. --reverse \
+      --prompt='review> ' --header-first --bind 'ctrl-a:select-all' \
+      --preview "$0 --preview {1}" --preview-window=down,70% \
+  | awk '{print $1}') || { echo "Nothing selected."; exit 0; }
+
+echo "$picked"
+[ "${1:-}" = "--dry-run" ] && exit 0
+
+for url in $picked; do
+  repo=$(cut -d/ -f5 <<<"$url")
+  dir="$HOME/Desktop/work/$repo"
+  [ -d "$dir" ] || gh repo clone "$ORG/$repo" "$dir"
+  osascript <<EOF
+tell application "Ghostty"
+  new tab in front window with configuration {initial working directory:"$dir", initial input:"cc \"/review-pr $url\"\n"}
+end tell
+EOF
+  # requesting yourself as reviewer makes the next run skip this PR
+  gh pr comment "$url" -b "reviewing" >/dev/null || echo "Failed to post 'reviewing' on $url" >&2
+  gh api -X POST "repos/$ORG/$repo/pulls/${url##*/}/requested_reviewers" -f "reviewers[]=$me" >/dev/null || echo "Failed to add you as reviewer on $url" >&2
+done
